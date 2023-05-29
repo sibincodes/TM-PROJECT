@@ -10,6 +10,6 @@ export const SideNavComponent = styled('div')(({ theme }) => ({
     '.sideNav__child':{
         padding:'10px 36px',
         color:theme.palette.custom.darkGrey,
-         textTransform:'capitalize'
+        textTransform:'capitalize'
     }
   }));
