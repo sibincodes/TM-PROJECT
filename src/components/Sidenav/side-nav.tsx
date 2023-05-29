@@ -8,6 +8,7 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import StarBorder from "@mui/icons-material/StarBorder";
+import { Outlet } from "react-router-dom";
 
 export  const SideNavigation = () => {
     const [inputValues, setInputValues] = React.useState<{[key:string]: boolean | any}>([])
@@ -24,7 +25,8 @@ export  const SideNavigation = () => {
   }
 
   return (
-    <List sx={{ width: "100%", maxWidth: 400, bgcolor: "background.paper" }}>
+    <>
+       <List sx={{ width: "100%", maxWidth: 400, bgcolor: "background.paper" }}>
       <ListItemButton onClick={(e)=>handleClick('setup')}>
         <ListItemIcon>
           <InboxIcon />
@@ -60,5 +62,8 @@ export  const SideNavigation = () => {
         </List>
       </Collapse>
     </List>
+    <Outlet/>
+    </>
+ 
   );
 }

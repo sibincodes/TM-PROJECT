@@ -1,14 +1,14 @@
 
 import { Routes, Route } from "react-router-dom";
-import { Home } from "./components/Home/home";
+import { routerType } from "./types/router.types";
+import { pageRoutes } from "./page-routes";
+import {ProtectedRoutes} from "./components/protected-routes";
 
-export const RoutesPage = () => {
-  return (
-    <>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </>
-  );
+export const Router = () => {
+  const page = pageRoutes.map(({ path, title, element }: routerType) => {
+    return <Route element={<ProtectedRoutes/>}> <Route key={title} path={`/${path}`} element={element} /></Route>;
+  });
+
+  return <Routes>{page}</Routes>;
 };
 
