@@ -5,7 +5,8 @@ import { SideMenu } from "./side-menu";
 
 export const SideNavigation = () => {
   return (
-    <SideNavComponent>
+    <>
+        <SideNavComponent>
       {sideMenuOptions.map(({ mainMenu, childItems }) => (
         <List
           sx={{ width: "100%", maxWidth: 400, bgcolor: "background.paper" }}
@@ -14,5 +15,7 @@ export const SideNavigation = () => {
         </List>
       ))}
     </SideNavComponent>
+    </>
+
   );
 };

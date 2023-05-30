@@ -1,12 +1,12 @@
 import { routerType } from "./types/router.types";
-import { Home } from "./components/Home/home";
 import { Profile } from "./components/Profile/profile";
+import {TeacherNotes} from "./components/TeacherNotes/teacher-notes";
 
 export const pageRoutes: routerType[] = [
   {
     path: "/",
-    element: <Home />,
-    title: "home"
+    element: <TeacherNotes />,
+    title: "TeacherNotes"
   },
   {
     path: "profile",
