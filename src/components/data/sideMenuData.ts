@@ -31,34 +31,46 @@ export const sideMenuOptions=[{
 ]
 },
 {
-    mainMenu:'set up',
+    mainMenu:'data entry area',
     childItems:[{
-    icon:'',
+    icon:'/icons/LeaveApproval.svg',
     title:'Leave Approval'
 },
 {
-    icon:'',
-    title:'Leave Approval'
+    icon:'/icons/TeacherSubstitution.svg',
+    title:'Teacher Substitution'
 },
 {
-    icon:'',
-    title:'Leave Approval'
+    icon:'/icons/StudentsDailyAttendance.svg',
+    title:'Student Daily Attendance'
 },
 {
-    icon:'',
-    title:'Leave Approval'
+    icon:'/icons/StaffAttendance.svg',
+    title:'Staff Attendance'
 },
 {
-    icon:'',
-    title:'Leave Approval'
+    icon:'/icons/StudentLeaveRequest.svg',
+    title:'Student Leave Request'
 },
 {
-    icon:'',
-    title:'Leave Approval'
+    icon:'/icons/TeacherNotes.svg',
+    title:'Teacher Notes'
 },
 {
-    icon:'',
-    title:'Leave Approval'
+    icon:'/icons/Circular.svg',
+    title:'Circular'
+},
+{
+    icon:'/icons/Recognition.svg',
+    title:'Recognition'
+},
+{
+    icon:'/icons/AcademicCalendar.svg',
+    title:'Academic Calendar'
+},
+{
+    icon:'/icons/Logout.svg',
+    title:'Log out'
 },
 ]
 }]
