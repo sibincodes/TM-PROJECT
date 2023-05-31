@@ -17,7 +17,6 @@ export const SideMenu = ({
   const [menuOpen, setOpen] = useState(false);
   const theme = useTheme();
 
-
   const handleClick = () => {
     setOpen((prev: boolean) => !prev);
   };
@@ -25,16 +24,21 @@ export const SideMenu = ({
     <>
       <ListItemButton onClick={handleClick} className="sideNav__parent">
         <ListItemText primary={mainMenu} />
-        {menuOpen ? <ExpandLess /> : <ExpandMore />}
+        {<object
+                  data="/HeaderIcons/next.svg"
+                  width="8"
+                  height="16"
+                  className={menuOpen?"sideNav__parent--open":"sideNav__parent--close"}
+                />}
       </ListItemButton>
-      <Collapse in={menuOpen} timeout="auto" unmountOnExit >
+      <Collapse in={menuOpen} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <>
             {childItems.map(({ icon, title }) => (
-              <ListItemButton  className="sideNav__child">
+              <ListItemButton className="sideNav__child">
                 <ListItemIcon>
-                <object data={icon}/>              
-  </ListItemIcon>
+                  <object data={icon} />
+                </ListItemIcon>
                 <ListItemText primary={title} />
               </ListItemButton>
             ))}

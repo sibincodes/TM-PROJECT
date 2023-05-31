@@ -7,10 +7,7 @@ import { SideMenu } from "./side-menu";
 export const SideNavigation = () => {
   return (
     <>
-    <Box className="sideNav__logo" >
-    <img src="logo.png" />
 
-    </Box>
       {sideMenuOptions.map(({ mainMenu, childItems }) => (
         <List
           
