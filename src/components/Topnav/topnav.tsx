@@ -16,6 +16,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { useLocation } from "react-router-dom";
 import { Header } from "../../styles/header";
+import { Breadcrumbs, Link } from "@mui/material";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -162,38 +163,82 @@ export function TopNav() {
     </Menu>
   );
   const drawerWidth = 240;
-
+  const breadcrumbs = [
+    <Link underline="hover" key="1"  href="/" >
+      Dashboard
+    </Link>,
+    <Link
+      underline="hover"
+      key="2"
+      
+      href="/material-ui/getting-started/installation/"
+    >
+      2021-2022
+    </Link>,
+    <Typography key="3" >
+      Teacher Notes
+    </Typography>,
+  ];
   return (
     <Header>
-      <AppBar sx={{ position: "relative" }} className="header" color="inherit">
+      <AppBar className="header" color="inherit">
         <Toolbar>
           <Box className="header__logo">
             <img src="logo.png" />
           </Box>
           <Toolbar className="header__right">
             <Box>
-            <Typography>{pageName}</Typography>
+              <Typography className="header__title">{pageName}</Typography>
+              <Breadcrumbs
+                separator={<object
+                  data="/HeaderIcons/next.svg"
+                  width="7"
+                  height="14"
+                />}
+                className="header__links"
 
+                aria-label="breadcrumb"
+              >
+                {breadcrumbs}
+              </Breadcrumbs>
             </Box>
 
-            <Box>
-              <Search>
-                <SearchIconWrapper>
-                  <SearchIcon />
-                </SearchIconWrapper>
-                <StyledInputBase
-                  placeholder="Search"
-                  inputProps={{ "aria-label": "search" }}
+            <Box className="header__right--flex">
+              <form className="header__search">
+                <IconButton type="submit" aria-label="search">
+                  <object
+                    data="/HeaderIcons/Search.svg"
+                    width="16"
+                    height="16"
+                  />
+                </IconButton>
+                <InputBase placeholder="Search" />
+              </form>
+
+              <IconButton
+                aria-label="notifications"
+                sx={{ marginRight: "18px" }}
+              >
+                <object
+                  data="/HeaderIcons/Notification.svg"
+                  width="14"
+                  height="16"
                 />
-              </Search>
-              <IconButton size="large" aria-label="show 4 new mails">
-                <img src="/HeaderIcons/notification.svg" />
               </IconButton>
-              <IconButton size="large" aria-label="show 17 new notifications">
-                <img src="/HeaderIcons/question.svg" />
+              <IconButton aria-label="questions" sx={{ marginRight: "18px" }}>
+                <object
+                  data="/HeaderIcons/Question.svg"
+                  width="16"
+                  height="16"
+                />
               </IconButton>
-              <IconButton size="large" aria-label="show 17 new notifications">
-                <img src="/HeaderIcons/settings.svg" />
+              <IconButton aria-label="settings" sx={{ marginRight: "10px" }}>
+                <object
+                  data="/HeaderIcons/Settings.svg"
+                  width="16"
+                  height="16"
+                  
+                />
               </IconButton>
               <IconButton
                 size="large"
@@ -203,8 +248,9 @@ export function TopNav() {
                 aria-haspopup="true"
                 onClick={handleProfileMenuOpen}
                 color="inherit"
+                className="header__avatar"
               >
-                <AccountCircle />
+                <img src="/HeaderIcons/Avatar.png" />
               </IconButton>
             </Box>
           </Toolbar>

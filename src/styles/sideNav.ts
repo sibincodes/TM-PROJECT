@@ -32,12 +32,12 @@ export const SideNavComponent = styled('div')(({ theme }) => ({
         fontFamily:'PlusJakartaSans'
     }
     ,
-    '.sideNav__parent .MuiSvgIcon-root[data-testid="ExpandMoreIcon"] ':{
-        transform: 'rotate(270deg)'
+    '.sideNav__parent--open':{
+        transform: 'rotate(90deg)'
 
     },
     '.sideNav__parent .MuiSvgIcon-root[data-testid="ExpandLessIcon"] ':{
-        transform: 'rotate(180deg)'
+        transform: 'rotate(-90deg)'
 
     },
     '.sideNav__parent .MuiSvgIcon-root path': {
