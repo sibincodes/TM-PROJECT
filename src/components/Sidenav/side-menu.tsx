@@ -33,8 +33,8 @@ export const SideMenu = ({
             {childItems.map(({ icon, title }) => (
               <ListItemButton  className="sideNav__child">
                 <ListItemIcon>
-                  <StarBorder />
-                </ListItemIcon>
+                <object data={icon}/>              
+  </ListItemIcon>
                 <ListItemText primary={title} />
               </ListItemButton>
             ))}

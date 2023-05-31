@@ -5,6 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from '@mui/material/Toolbar';
 import {TopNav} from '../Topnav/topnav'
 import { SideNavigation } from "../Sidenav/side-nav";
+import { SideNavComponent } from '../../styles/sideNav';
 
 const drawerWidth = 240;
 
@@ -17,22 +18,16 @@ export const Layout = ({children } : ChildrenProps) => {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <TopNav/>
-   
+      <SideNavComponent>
       <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            boxSizing: 'border-box',
-          },
-        }}
+      className="sideNav"
         variant="permanent"
         anchor="left"
       >
-        <Toolbar />
+        {/* <Toolbar /> */}
         <SideNavigation/>
       </Drawer>
+      </SideNavComponent>
       <Box
         component="main"
         sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
