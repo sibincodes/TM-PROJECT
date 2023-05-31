@@ -14,6 +14,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import { useLocation } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -58,6 +59,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export  function TopNav() {
+  const path= useLocation();
+  console.log("loaction",path);
+  const pageName = (path.pathname === '/') ? 
+     'Teacher Notes': path.pathname;
+  
+  
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
@@ -171,7 +178,7 @@ export  function TopNav() {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            TEACHER NOTES
+            {pageName}
           </Typography>
 
           <Box sx={{ flexGrow: 1 }} />
