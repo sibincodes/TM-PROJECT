@@ -1,18 +1,20 @@
 
 import { ThemeProvider } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
-import { Home } from "./components/Home/home";
 import { theme } from "./ThemeProvider";
+import { routerType } from "./types/router.types";
+import { pageRoutes } from "./page-routes";
+import { ProtectedRoutes } from "./components/protected-routes";
 
-export const RoutesPage = () => {
-  return (
-    <>
-    <ThemeProvider theme={theme}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-      </ThemeProvider>
-    </>
-  );
+export const Router = () => {
+
+  const pages = pageRoutes &&  pageRoutes.map(({ path, title, element, protectedRoute }: routerType) => {
+    if(protectedRoute)
+    return  <Route key={title} path={`/${path}`} element={ <ProtectedRoutes>{element}</ProtectedRoutes>} />;
+
+    return  <Route key={title} path={`/${path}`} element={ element} />;
+  });
+
+  return  <ThemeProvider theme={theme}><Routes>{pages}</Routes></ThemeProvider>
 };
 

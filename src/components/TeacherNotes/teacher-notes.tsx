@@ -1,36 +1,10 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import CssBaseline from '@mui/material/CssBaseline';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import {TopNav} from '../Topnav/topnav'
-import { SideNavigation } from "../Sidenav/side-nav";
-import { SideNavComponent } from '../../styles/sideNav';
+import { Typography } from '@mui/material';
+import {Layout} from "../Layout/layout";
 
-const drawerWidth = 240;
-
-export const Home = () => {
+export const TeacherNotes = () => {
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <TopNav/>
-      <SideNavComponent>
-      <Drawer
-      className="sideNav"
-        variant="permanent"
-        anchor="left"
-      >
-        {/* <Toolbar /> */}
-        <SideNavigation/>
-      </Drawer>
-      </SideNavComponent>
+    <Layout>
 
-      <Box
-        component="main"
-        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
-      >
-        <Toolbar />
         <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
@@ -58,7 +32,8 @@ export const Home = () => {
           eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
           posuere sollicitudin aliquam ultrices sagittis orci a.
         </Typography>
-      </Box>
-    </Box>
-  );
+
+    </Layout>
+  )
 }
+
