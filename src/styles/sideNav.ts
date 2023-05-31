@@ -3,7 +3,7 @@ import { styled } from "@mui/system";
 export const SideNavComponent = styled('div')(({ theme }) => ({
 
     '.sideNav .MuiDrawer-paper': {
-        minWidth: '260px',
+        minWidth: '270px',
         border: '1px solid',
         borderColor: theme.palette.custom.bngGrey
     },
@@ -44,7 +44,7 @@ export const SideNavComponent = styled('div')(({ theme }) => ({
         padding: '10px 16px',
         color: theme.palette.custom.darkGrey,
         textTransform: 'capitalize',
-        margin: '0 20px 6px 20px'
+        margin: '0 20px 4px 20px'
 
     },
 
