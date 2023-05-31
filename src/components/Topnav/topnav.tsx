@@ -16,6 +16,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { useLocation } from 'react-router-dom';
 
+
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   border:1,
@@ -195,18 +196,21 @@ export  function TopNav() {
           </Search>
             </Box>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
+              <img src="/HeaderIcons/notification.svg"/>
             </IconButton>
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
             >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
+                <img src="/HeaderIcons/question.svg"/>
+            </IconButton>
+            <IconButton
+              size="large"
+              aria-label="show 17 new notifications"
+              color="inherit"
+            >
+                <img src="/HeaderIcons/settings.svg"/>
             </IconButton>
             <IconButton
               size="large"
