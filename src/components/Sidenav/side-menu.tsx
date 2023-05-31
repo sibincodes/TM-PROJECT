@@ -27,7 +27,7 @@ export const SideMenu = ({
         <ListItemText primary={mainMenu} />
         {menuOpen ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
-      <Collapse in={menuOpen} timeout="auto" unmountOnExit>
+      <Collapse in={menuOpen} timeout="auto" unmountOnExit >
         <List component="div" disablePadding>
           <>
             {childItems.map(({ icon, title }) => (
