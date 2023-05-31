@@ -4,28 +4,17 @@ export const SideNavComponent = styled('div')(({ theme }) => ({
 
     '.sideNav .MuiDrawer-paper': {
         width: '280px',
-        border: '1px solid',
+        borderLeft: '1px solid',
         borderColor: theme.palette.custom.bngGrey,
-        borderBottom:'none',
         position:'relative',
         minHeight:'100vh'
     },
     '.sideNav .MuiList-root': {
         padding: '0px',
-        marginBottom:'6px'
+        marginBottom:'5px'
 
     },
-    '.sideNav__logo': {
-        borderBottom: '1px solid',
-        borderColor: theme.palette.custom.bngGrey
 
-    },
-    '.sideNav__logo img': {
-        width: '170px',
-        padding: '12px 0',
-        margin: '0 auto',
-        display: 'flex'
-    },
     '.sideNav__parent': {
         padding: '12px 36px',
         color: theme.palette.custom.lightGrey,
