@@ -2,12 +2,18 @@ import { styled } from "@mui/system";
 
 export const SideNavComponent = styled('div')(({ theme }) => ({
 
+    '.sideNav':{
+        position:'fixed',
+        top:'98px',
+    
+    },
     '.sideNav .MuiDrawer-paper': {
         width: '280px',
         borderLeft: '1px solid',
         borderColor: theme.palette.custom.bngGrey,
         position:'relative',
-        minHeight:'100vh'
+        minHeight:'100vh',
+ 
     },
     '.sideNav .MuiList-root': {
         padding: '0px',
