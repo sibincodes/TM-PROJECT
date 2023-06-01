@@ -31,7 +31,7 @@ export const Layout = ({children } : ChildrenProps) => {
       </SideNavComponent>
       <Box
         component="main"
-        sx={{ position:'relative',left:'280px',top:'98px' }}
+        sx={{ position:'relative',marginLeft:'280px',marginTop:'98px' }}
       >
         <Toolbar />
       {children}

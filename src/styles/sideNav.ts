@@ -5,14 +5,23 @@ export const SideNavComponent = styled('div')(({ theme }) => ({
     '.sideNav':{
         position:'fixed',
         top:'98px',
+        width: '280px',
+        borderRight: '1px solid',
+        borderColor: theme.palette.custom.bngGrey,
+        height:'calc(100% - 98px)'
+
     
     },
+    '*::-webkit-scrollbar': {
+        width: '6px'
+    },
+    '*::-webkit-scrollbar-thumb':{
+        backgroundColor:theme.palette.custom.borderLightGrey
+    },
     '.sideNav .MuiDrawer-paper': {
-        width: '280px',
-        borderLeft: '1px solid',
-        borderColor: theme.palette.custom.bngGrey,
         position:'relative',
-        minHeight:'100vh',
+        border:'none'
+
  
     },
     '.sideNav .MuiList-root': {
