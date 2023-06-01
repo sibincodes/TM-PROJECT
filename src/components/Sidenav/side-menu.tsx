@@ -7,7 +7,9 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import StarBorder from "@mui/icons-material/StarBorder";
 import { List, useTheme } from "@mui/material";
-import {RoutesContextType, RoutesContext} from '../../routes';
+import { RoutesContext} from '../../context/routes-context-provider';
+import { RoutesContextType } from '../../@types/routes-context-type';
+
 
 export const SideMenu = ({
   mainMenu,

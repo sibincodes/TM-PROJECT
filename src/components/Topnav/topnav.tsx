@@ -17,7 +17,8 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import { useLocation } from "react-router-dom";
 import { Header } from "../../styles/header";
 import { Breadcrumbs, Link } from "@mui/material";
-import { RoutesContext, RoutesContextType } from "../../routes";
+import { RoutesContext} from '../../context/routes-context-provider';
+import { RoutesContextType } from '../../@types/routes-context-type';
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
