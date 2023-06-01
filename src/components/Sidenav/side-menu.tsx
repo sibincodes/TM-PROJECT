@@ -38,7 +38,7 @@ export const SideMenu = ({
           <>
             {childItems.map(({ icon, title }) => (
               <NavLink
-              to="/"
+              to="/a"
               className={({ isActive, isPending }) =>
                 isPending ? "" : isActive ? "sideNav__link sideNav__link--active" : "sideNav__link"
               }
