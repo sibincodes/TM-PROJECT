@@ -17,6 +17,7 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import { useLocation } from "react-router-dom";
 import { Header } from "../../styles/header";
 import { Breadcrumbs, Link } from "@mui/material";
+import { RoutesContext, RoutesContextType } from "../../routes";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -61,6 +62,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export function TopNav() {
+  const { routes } = React.useContext(RoutesContext) as RoutesContextType;
+  console.log("Routes context", routes);
   const path = useLocation();
   console.log("loaction", path);
   const pageName = path.pathname === "/" ? "Teacher Notes" : path.pathname;
