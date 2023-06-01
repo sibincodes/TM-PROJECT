@@ -1,9 +1,7 @@
 import React from 'react';
 import { RoutesContextType, RoutesContextProps } from '../@types/routes-context-type';
+import { ChildrenProps } from '../@types/react-children-type';
 
-interface ChildrenProps {
-    children: JSX.Element[] | JSX.Element
-  }
 export const RoutesContext = React.createContext<RoutesContextType | null>(null);
 
 export const RouteProvider = ({ children }: ChildrenProps) => {

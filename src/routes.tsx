@@ -2,11 +2,10 @@ import React from "react";
 import { ThemeProvider } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
 import { theme } from "./ThemeProvider";
-import { routerType } from "./types/router.types";
+import { routerType } from "./@types/routes-type";
 import { pageRoutes } from "./page-routes";
 import { ProtectedRoutes } from "./components/protected-routes";
 import { RouteProvider } from "./context/routes-context-provider";
-
 
 
 export const Router = () => {
