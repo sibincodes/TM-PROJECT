@@ -6,12 +6,10 @@ import Toolbar from '@mui/material/Toolbar';
 import {TopNav} from '../Topnav/topnav'
 import { SideNavigation } from "../Sidenav/side-nav";
 import { SideNavComponent } from '../../styles/sideNav';
+import { ChildrenProps } from '../../@types/react-children-type';
 
 const drawerWidth = 240;
 
-interface ChildrenProps {
-  children: JSX.Element[] | JSX.Element
-}
 
 export const Layout = ({children } : ChildrenProps) => {
   return (
