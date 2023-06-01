@@ -6,6 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import {TopNav} from '../Topnav/topnav'
 import { SideNavigation } from "../Sidenav/side-nav";
 import { SideNavComponent } from '../../styles/sideNav';
+import { theme } from '../../ThemeProvider';
 
 const drawerWidth = 240;
 
@@ -31,7 +32,7 @@ export const Layout = ({children } : ChildrenProps) => {
       </SideNavComponent>
       <Box
         component="main"
-        sx={{ position:'relative',marginLeft:'280px',marginTop:'98px' }}
+        sx={{ position:'relative',marginLeft:'280px',marginTop:'98px',padding:'20px 24px',backgroundColor:theme.palette.custom.backgroundBlue,minHeight:'calc(100vh - 98px)' }}
       >
         <Toolbar />
       {children}

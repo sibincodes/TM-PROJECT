@@ -22,7 +22,8 @@ export const theme = createTheme({
             textGrey:'#6E7C87',
             black:'#000',
             lightBlack:'#252525',
-            blue:'#417EE3'
+            blue:'#417EE3',
+            backgroundBlue:'#FAFBFD'
         },
     },
 
