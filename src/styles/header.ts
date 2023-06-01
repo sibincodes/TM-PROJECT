@@ -6,7 +6,7 @@ export const Header = styled('div')(({ theme }) => ({
         borderBottom: '1px solid',
         borderColor: theme.palette.custom.bngGrey,
         boxShadow:'unset',
-        position:'relative'
+        position:'fixed'
     },
     '.header .MuiIconButton-root':{
         padding:'0',
