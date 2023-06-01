@@ -69,7 +69,7 @@ export const SideNavComponent = styled('div')(({ theme }) => ({
 
     '.sideNav__child .MuiListItemIcon-root': {
         minWidth: 'unset',
-        marginRight: '15px'
+        marginRight: '13px'
     },
     '.sideNav__child .MuiTypography-root': {
         fontSize: '14px',

@@ -7,6 +7,7 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 import StarBorder from "@mui/icons-material/StarBorder";
 import { List, useTheme } from "@mui/material";
 import { useState } from "react";
+import { ReactSVG } from "react-svg";
 export const SideMenu = ({
   mainMenu,
   childItems,
@@ -37,7 +38,7 @@ export const SideMenu = ({
             {childItems.map(({ icon, title }) => (
               <ListItemButton className="sideNav__child">
                 <ListItemIcon>
-                  <object data={icon} />
+                <ReactSVG src={icon} />
                 </ListItemIcon>
                 <ListItemText primary={title} />
               </ListItemButton>
