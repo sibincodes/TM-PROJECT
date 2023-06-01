@@ -17,7 +17,11 @@ export const theme = createTheme({
             darkGrey: '#344054',
             lightGrey: '#84919A',
             midGrey: '#9AA6AC',
-            bngGrey: '#F2F4F7'
+            bngGrey: '#F2F4F7',
+            borderLightGrey:'#DDE2E4',
+            textGrey:'#6E7C87',
+            black:'#000',
+            lightBlack:'#252525'
         },
     },
 

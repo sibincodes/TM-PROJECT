@@ -15,9 +15,10 @@ interface ChildrenProps {
 
 export const Layout = ({children } : ChildrenProps) => {
   return (
-    <Box sx={{ display: 'flex' }}>
+    <>      <TopNav/>
+     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <TopNav/>
+
       <SideNavComponent>
       <Drawer
       className="sideNav"
@@ -36,5 +37,7 @@ export const Layout = ({children } : ChildrenProps) => {
       {children}
       </Box>
     </Box>
+    </>
+   
   );
 }
