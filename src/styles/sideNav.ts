@@ -29,6 +29,7 @@ export const SideNavComponent = styled('div')(({ theme }) => ({
         marginBottom:'5px'
 
     },
+    
 
     '.sideNav__parent': {
         padding: '12px 36px',
@@ -59,17 +60,38 @@ export const SideNavComponent = styled('div')(({ theme }) => ({
         fill: theme.palette.custom.midGrey,
 
     },
+    '.sideNav__link':{
+        margin: '0 20px 4px 20px',
+        display:'block',
+        textDecoration:'none'
+
+
+    },
+    '.sideNav__link--active':{
+        borderRadius:'6px',
+        backgroundColor:theme.palette.custom.blue
+
+
+
+    },
     '.sideNav__child': {
         padding: '10px 16px',
         color: theme.palette.custom.darkGrey,
         textTransform: 'capitalize',
-        margin: '0 20px 4px 20px'
+
+    },
+    '.sideNav__link--active .sideNav__child':{
+        color:'white'
 
     },
 
     '.sideNav__child .MuiListItemIcon-root': {
         minWidth: 'unset',
         marginRight: '13px'
+    },
+    '.sideNav__link--active .sideNav__child .MuiListItemIcon-root path':{
+        stroke:'white'
+
     },
     '.sideNav__child .MuiTypography-root': {
         fontSize: '14px',

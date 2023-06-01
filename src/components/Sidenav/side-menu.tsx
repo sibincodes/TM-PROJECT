@@ -8,6 +8,7 @@ import StarBorder from "@mui/icons-material/StarBorder";
 import { List, useTheme } from "@mui/material";
 import { useState } from "react";
 import { ReactSVG } from "react-svg";
+import { NavLink } from "react-router-dom";
 export const SideMenu = ({
   mainMenu,
   childItems,
@@ -36,13 +37,21 @@ export const SideMenu = ({
         <List component="div" disablePadding>
           <>
             {childItems.map(({ icon, title }) => (
+              <NavLink
+              to="/"
+              className={({ isActive, isPending }) =>
+                isPending ? "" : isActive ? "sideNav__link sideNav__link--active" : "sideNav__link"
+              }
+            >
               <ListItemButton className="sideNav__child">
                 <ListItemIcon>
                 <ReactSVG src={icon} />
                 </ListItemIcon>
                 <ListItemText primary={title} />
               </ListItemButton>
-            ))}
+              </NavLink>
+            ))
+          }
           </>
         </List>
       </Collapse>
