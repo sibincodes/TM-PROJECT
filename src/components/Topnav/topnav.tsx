@@ -65,6 +65,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export function TopNav() {
   const { routes } = React.useContext(RoutesContext) as RoutesContextType;
   console.log("Routes context", routes);
+  const pageData = React.useContext(RoutesContext);
+console.log("Data",pageData)
   const path = useLocation();
   console.log("loaction", path);
   const pageName = path.pathname === "/" ? "Teacher Notes" : path.pathname;
@@ -180,8 +182,7 @@ export function TopNav() {
       2021-2022
     </Link>,
     <Typography key="3" >
-      Teacher Notes
-    </Typography>,
+{pageData?.routes?.title}    </Typography>,
   ];
   return (
     <Header>
@@ -192,7 +193,7 @@ export function TopNav() {
           </Box>
           <Toolbar className="header__right">
             <Box>
-              <Typography className="header__title">{pageName}</Typography>
+              <Typography className="header__title">{pageData?.routes?.title}</Typography>
               <Breadcrumbs
                 separator={<object
                   data="/HeaderIcons/next.svg"
