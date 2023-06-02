@@ -20,37 +20,21 @@ export const ButtonComponent = ({
   buttonType?: string;
 }) => {
   const buttonStyles: SxProps = {
-    border:
-      buttonType === "cancel"
-        ? "1px solid #EC7C00"
-        : buttonType === "edit" || buttonType ==="preview"
-        ? "1px solid #0E0E0E"
-        : "",
-    color:
-      buttonType === "cancel"
-        ? "#FF6A31"
-        : buttonType === "edit" || buttonType === "preview"
-        ? "#0E0E0E"
-        : "",
-    backgroundColor:
-      buttonType === "cancel" || "edit" || "preview"
-        ? "transparent"
-        : buttonType === "add" || "publish"
-        ? "#FF800F"
-        : "",
-    fontSize: { sm: "14px", md: "16px" },
-    "&:active, &:hover": {
-      opacity: "0.9",
-      border: buttonType === "cancel" ? "1px solid #FF6A31" : "",
-      backgroundColor: buttonType === "add" || buttonType === "publish" ? "#FF6A31" :    buttonType === "cancel" || "edit" || "preview"
-      ? "transparent" : "",
-    },
+    backgroundColor : buttonType === 'add' ? "#FF800F" : buttonType==='cancel' || buttonType==='edit' || 'header' ? 'transparent' :'',
+    color : buttonType === 'add' ? "#FFFFFF" : buttonType === "cancel" ? "#FF6A31" : buttonType==='edit' || buttonType==='header' ? "#252525" : '',
     fontWeight:
-      buttonType === "save" || buttonType === "cancel" ? "600" : "400",
+    buttonType === "add" || "edit" || "header" ? "600" : "400",
+    border : buttonType === 'add' ? "1px solid #EC7C00" : buttonType === "cancel" ? "1px solid #FF800F" : buttonType==='edit' ? "1px solid #252525" : buttonType === "header" ? 'none' : '',
     textTransform:
       buttonType === "add" || "publish" || "cancel"
         ? "capitalize"
         : "uppercase",
+        fontSize: { sm: "14px", md: "16px" },
+        "&:active, &:hover": {
+          opacity: "0.9",
+          border: buttonType === "add" || buttonType === "cancel" ? "1px solid #FF6A31" : buttonType==="edit" ? "1px solid #252525" : buttonType === "header" ? 'none' : '',
+          backgroundColor: buttonType === "add" ? "#FF6A31" :   buttonType==="edit" ? "transparent" : buttonType === "header" ? 'transparent' : '',
+        },
     ...styles,
   };
 
