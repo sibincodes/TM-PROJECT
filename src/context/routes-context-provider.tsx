@@ -5,7 +5,10 @@ import { ChildrenProps } from '../@types/react-children-type';
 export const RoutesContext = React.createContext<RoutesContextType | null>(null);
 
 export const RouteProvider = ({ children }: ChildrenProps) => {
-const [routes, setRoutes] = React.useState<RoutesContextProps>();
+const [routes, setRoutes] = React.useState<RoutesContextProps>({
+  title:'Teacher Notes',
+  path:'Dashboard/2020-2021/teacher'
+});
 
 const saveRoutes = (selectedpath: RoutesContextProps) => {
   const newTodo: RoutesContextProps = {
