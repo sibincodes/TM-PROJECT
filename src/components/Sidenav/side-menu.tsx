@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
@@ -6,7 +7,10 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import StarBorder from "@mui/icons-material/StarBorder";
 import { List, useTheme } from "@mui/material";
-import { useState } from "react";
+import { RoutesContext} from '../../context/routes-context-provider';
+import { RoutesContextType } from '../../@types/routes-context-type';
+
+
 import { ReactSVG } from "react-svg";
 import { NavLink } from "react-router-dom";
 export const SideMenu = ({
@@ -16,11 +20,13 @@ export const SideMenu = ({
   mainMenu: string;
   childItems: { icon: string; title: string }[];
 }) => {
+  const { saveRoutes } = React.useContext(RoutesContext) as RoutesContextType;
   const [menuOpen, setOpen] = useState(false);
   const theme = useTheme();
 
   const handleClick = () => {
     setOpen((prev: boolean) => !prev);
+    saveRoutes({title:'Teacher', path: "Dashboard/2020-2021/Teacher Notes"});
   };
   return (
     <>

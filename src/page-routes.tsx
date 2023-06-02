@@ -1,4 +1,4 @@
-import { routerType } from "./types/router.types";
+import { routerType } from "./@types/routes-type";
 import { Profile } from "./components/Profile/profile";
 import { TeacherNotes } from "./components/TeacherNotes/teacher-notes";
 import { Login } from "./components/Login/login";
