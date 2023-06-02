@@ -18,7 +18,7 @@ export const SideMenu = ({
   childItems,
 }: {
   mainMenu: string;
-  childItems: { icon: string; title: string }[];
+  childItems: { icon: string; title: string ,path:string}[];
 }) => {
   const { saveRoutes } = React.useContext(RoutesContext) as RoutesContextType;
   const [menuOpen, setOpen] = useState(false);
@@ -26,7 +26,10 @@ export const SideMenu = ({
 
   const handleClick = () => {
     setOpen((prev: boolean) => !prev);
-    saveRoutes({title:'Teacher', path: "Dashboard/2020-2021/Teacher Notes"});
+  };
+  const navMenuClickHandler = (title: string ) => {
+  
+    saveRoutes({title, path: `Dashboard/2020-2021/${title}`});
   };
   return (
     <>
@@ -42,14 +45,16 @@ export const SideMenu = ({
       <Collapse in={menuOpen} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <>
-            {childItems.map(({ icon, title }) => (
+            {childItems.map(({ icon, title,path },index) => (
               <NavLink
-              to="/a"
+              key={index}
+              to={path}
               className={({ isActive, isPending }) =>
                 isPending ? "" : isActive ? "sideNav__link sideNav__link--active" : "sideNav__link"
               }
+              onClick={()=>navMenuClickHandler(title)}
             >
-              <ListItemButton className="sideNav__child">
+              <ListItemButton className="sideNav__child" >
                 <ListItemIcon>
                 <ReactSVG src={icon} />
                 </ListItemIcon>
