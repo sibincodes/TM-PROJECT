@@ -26,5 +26,8 @@ export const theme = createTheme({
             backgroundBlue:'#FAFBFD'
         },
     },
+    typography: {
+        fontFamily: 'PlusJakartaSans',
+      },
 
 });
