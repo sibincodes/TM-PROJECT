@@ -11,6 +11,8 @@ import { RoutesContext} from '../../context/routes-context-provider';
 import { RoutesContextType } from '../../@types/routes-context-type';
 
 
+import { ReactSVG } from "react-svg";
+import { NavLink } from "react-router-dom";
 export const SideMenu = ({
   mainMenu,
   childItems,
@@ -41,13 +43,21 @@ export const SideMenu = ({
         <List component="div" disablePadding>
           <>
             {childItems.map(({ icon, title }) => (
+              <NavLink
+              to="/a"
+              className={({ isActive, isPending }) =>
+                isPending ? "" : isActive ? "sideNav__link sideNav__link--active" : "sideNav__link"
+              }
+            >
               <ListItemButton className="sideNav__child">
                 <ListItemIcon>
-                  <object data={icon} />
+                <ReactSVG src={icon} />
                 </ListItemIcon>
                 <ListItemText primary={title} />
               </ListItemButton>
-            ))}
+              </NavLink>
+            ))
+          }
           </>
         </List>
       </Collapse>
