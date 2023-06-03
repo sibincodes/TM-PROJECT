@@ -62,11 +62,14 @@ export const SideNavComponent = styled('div')(({ theme }) => ({
 
     },
     '.sideNav__link':{
-        margin: '0 20px 4px 20px',
+        margin: '0 20px 8px 20px',
         display:'block',
         textDecoration:'none'
 
 
+    },
+    '.sideNav .MuiCollapse-root':{
+        marginTop:'4px'
     },
     '.sideNav__link--active':{
         borderRadius:'6px',
@@ -80,6 +83,9 @@ export const SideNavComponent = styled('div')(({ theme }) => ({
         color: theme.palette.custom.darkGrey,
         textTransform: 'capitalize',
 
+    },
+    '.sideNav__child .MuiListItemText-root':{
+        margin:'0'
     },
     '.sideNav__link--active .sideNav__child':{
         color:'white'
