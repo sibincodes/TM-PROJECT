@@ -21,7 +21,7 @@ export const Profile = () => {
     <Layout>
       <>
       Profile
-      <ButtonComponent name ='Add New' buttonType='edit' 
+      <ButtonComponent name ='Add New' buttonType='add' 
               aria-controls={open ? "basic-menu" : undefined}
               aria-haspopup="true"
               aria-expanded={open ? "true" : undefined}

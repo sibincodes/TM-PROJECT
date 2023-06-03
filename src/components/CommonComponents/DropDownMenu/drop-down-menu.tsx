@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, MenuItem } from '@mui/material';
+import { ListItemIcon, Menu, MenuItem } from '@mui/material';
 
 export interface DropDownStatus {
     isOpen : boolean;
@@ -22,11 +22,30 @@ export const DropDown = ({isOpen, anchorEl, handleMenuClose} : DropDownStatus) =
       'aria-labelledby': 'basic-button',
     }}
   >
-    <MenuItem onClick={handleClose}>Classwork</MenuItem>
-    <MenuItem onClick={handleClose}>Home Work</MenuItem>
-    <MenuItem onClick={handleClose}>Assignment</MenuItem>
-    <MenuItem onClick={handleClose}>Project</MenuItem>
-    <MenuItem onClick={handleClose}>Diary</MenuItem>
+    <MenuItem onClick={handleClose}> 
+    <ListItemIcon>
+      <img src="./ListIcons/classwork.svg" />
+    </ListItemIcon>Classwork</MenuItem>
+    <MenuItem  onClick={handleClose}>
+       <ListItemIcon>
+      <img src="./ListIcons/homework.svg" />
+    </ListItemIcon>
+      Home Work</MenuItem>
+    <MenuItem onClick={handleClose}>
+    <ListItemIcon>
+      <img src="./ListIcons/assignment.svg" />
+    </ListItemIcon>
+      Assignment</MenuItem>
+    <MenuItem onClick={handleClose}>
+    <ListItemIcon>
+      <img src="./ListIcons/project.svg" />
+    </ListItemIcon>
+      Project</MenuItem>
+    <MenuItem onClick={handleClose}>
+    <ListItemIcon>
+      <img src="./ListIcons/diary.svg" />
+    </ListItemIcon>
+      Diary</MenuItem>
   </Menu>
   )
 }
