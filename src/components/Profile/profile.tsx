@@ -2,6 +2,7 @@ import {  useState } from 'react';
 import { Layout } from '../Layout/layout';
 import { ButtonComponent } from '../CommonComponents/Button/button';
 import { DropDown } from "../CommonComponents/DropDownMenu/drop-down-menu";
+import addButton from "../../assets/add-button.svg";
 
 export const Profile = () => {
 
@@ -16,12 +17,13 @@ export const Profile = () => {
   const handleMenuClose = () => {
     setAnchorEl(null);
   }
-
+  const addIconButton = <img src={addButton} />;
   return (
     <Layout>
       <>
       Profile
       <ButtonComponent name ='Add New' buttonType='add' 
+              icon={addIconButton}
               aria-controls={open ? "basic-menu" : undefined}
               aria-haspopup="true"
               aria-expanded={open ? "true" : undefined}
