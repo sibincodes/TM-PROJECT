@@ -3,6 +3,7 @@ import { Layout } from '../Layout/layout';
 import { ButtonComponent } from '../CommonComponents/Button/button';
 import { DropDown } from "../CommonComponents/DropDownMenu/drop-down-menu";
 import addButton from "../../assets/add-button.svg";
+import Table from "../CommonComponents/Table/table"
 
 export const Profile = () => {
 
@@ -30,6 +31,7 @@ export const Profile = () => {
               actionHandler={(e)=>ButtonActionHandler(e)}
       />
       <DropDown isOpen={open} anchorEl={anchorEl} handleMenuClose={handleMenuClose}/>
+      <Table/>
       </>
     </Layout>
   )
