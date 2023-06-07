@@ -17,6 +17,9 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import { useLocation } from "react-router-dom";
 import { Header } from "../../styles/header";
 import { Breadcrumbs, Link } from "@mui/material";
+import { RoutesContext } from "../../context/routes-context-provider";
+import { RoutesContextType } from "../../@types/routes-context-type";
+import { ReactSVG } from "react-svg";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -61,6 +64,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export function TopNav() {
+  const { routes } = React.useContext(RoutesContext) as RoutesContextType;
+  console.log("Routes context", routes);
+  const pageData = React.useContext(RoutesContext);
+  console.log("Data", pageData);
   const path = useLocation();
   console.log("loaction", path);
   const pageName = path.pathname === "/" ? "Teacher Notes" : path.pathname;
@@ -89,6 +96,10 @@ export function TopNav() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const searchSubmitHandler=(e:React.FormEvent<HTMLFormElement>)=>{
+    e.preventDefault();
+
+  }
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
@@ -164,20 +175,17 @@ export function TopNav() {
   );
   const drawerWidth = 240;
   const breadcrumbs = [
-    <Link underline="hover" key="1"  href="/" >
+    <Link underline="hover" key="1" href="/">
       Dashboard
     </Link>,
     <Link
       underline="hover"
       key="2"
-      
       href="/material-ui/getting-started/installation/"
     >
       2021-2022
     </Link>,
-    <Typography key="3" >
-      Teacher Notes
-    </Typography>,
+    <Typography key="3">{pageData?.routes?.title} </Typography>,
   ];
   return (
     <Header>
@@ -188,15 +196,14 @@ export function TopNav() {
           </Box>
           <Toolbar className="header__right">
             <Box>
-              <Typography className="header__title">{pageName}</Typography>
+              <Typography className="header__title">
+                {pageData?.routes?.title}
+              </Typography>
               <Breadcrumbs
-                separator={<object
-                  data="/HeaderIcons/next.svg"
-                  width="7"
-                  height="14"
-                />}
+                separator={
+                  <object data="/HeaderIcons/next.svg" width="7" height="14" />
+                }
                 className="header__links"
-
                 aria-label="breadcrumb"
               >
                 {breadcrumbs}
@@ -204,10 +211,15 @@ export function TopNav() {
             </Box>
 
             <Box className="header__right--flex">
-              <form className="header__search">
-                <IconButton type="submit" aria-label="search">
-                  <object
-                    data="/HeaderIcons/Search.svg"
+              <form className="header__search" onSubmit={searchSubmitHandler}>
+                <IconButton
+                  type="submit"
+                  aria-label="search"
+                  disableFocusRipple
+                  disableRipple
+                >
+                  <ReactSVG
+                    src="/HeaderIcons/Search.svg"
                     width="16"
                     height="16"
                   />
@@ -218,26 +230,37 @@ export function TopNav() {
               <IconButton
                 aria-label="notifications"
                 sx={{ marginRight: "18px" }}
+                disableFocusRipple
+                disableRipple
               >
-                <object
-                  data="/HeaderIcons/Notification.svg"
+                  <ReactSVG
+                  src="/HeaderIcons/Notification.svg"
                   width="14"
                   height="16"
                 />
               </IconButton>
-              <IconButton aria-label="questions" sx={{ marginRight: "18px" }}>
-                <object
-                  data="/HeaderIcons/Question.svg"
+              <IconButton
+                aria-label="questions"
+                sx={{ marginRight: "18px" }}
+                disableFocusRipple
+                disableRipple
+              >
+                 <ReactSVG
+                  src="/HeaderIcons/Question.svg"
                   width="16"
                   height="16"
                 />
               </IconButton>
-              <IconButton aria-label="settings" sx={{ marginRight: "10px" }}>
-                <object
-                  data="/HeaderIcons/Settings.svg"
+              <IconButton
+                aria-label="settings"
+                sx={{ marginRight: "10px" }}
+                disableFocusRipple
+                disableRipple
+              >
+                <ReactSVG
+                  src="/HeaderIcons/Settings.svg"
                   width="16"
                   height="16"
-                  
                 />
               </IconButton>
               <IconButton
@@ -249,6 +272,8 @@ export function TopNav() {
                 onClick={handleProfileMenuOpen}
                 color="inherit"
                 className="header__avatar"
+                disableFocusRipple
+                disableRipple
               >
                 <img src="/HeaderIcons/Avatar.png" />
               </IconButton>

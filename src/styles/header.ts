@@ -88,9 +88,20 @@ export const Header = styled('div')(({ theme }) => ({
         fontWeight:'400',
         marginLeft:'10px'
     },
+    ".header__search svg:active":{
+        transform: 'scale(0.9)',
+        transition:'0.8ms ease'
+
+    },
     ".header__avatar img":{
         width:'32px',
         height:'32px',
+    },
+    ".header button svg":{
+        cursor:"pointer"
+    },
+    ".header svg:hover path":{
+        fill:theme.palette.custom.lightBlack
     }
 
 }))

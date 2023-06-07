@@ -21,8 +21,17 @@ export const theme = createTheme({
             borderLightGrey:'#DDE2E4',
             textGrey:'#6E7C87',
             black:'#000',
-            lightBlack:'#252525'
+            lightBlack:'#252525',
+            blue:'#417EE3',
+            backgroundBlue:'#FAFBFD',
+            paleBlue:'#EAECF0',
+            transparentBlue:'#F7F9FF',
+            backgroundBlack:'#0E0E0E',
+            blackOlive:"#3F3F3F"
         },
     },
+    typography: {
+        fontFamily: 'PlusJakartaSans',
+      },
 
 });
