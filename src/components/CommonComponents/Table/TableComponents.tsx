@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const TableComponent = ({ columns, rows }: { columns: any[]; rows: any[] }) => {
+const TableComponent = ({ columns, rows:{rows},callbackFn}: { columns: any[]; rows: {rows:any[]} ;callbackFn:(sub:any,index:number)=>void}) => {
   interface RowData {
     id: number;
     name: string;
@@ -37,44 +37,16 @@ const TableComponent = ({ columns, rows }: { columns: any[]; rows: any[] }) => {
       <table>
         <thead>
           <tr>
-            <th></th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Name</th>
-            <th>Age</th>
+            {columns.map((col:any,index:number)=> <th onClick={()=>callbackFn(col,index)}>{col}</th>)}
+     
           </tr>
         </thead>
         <tbody>
+          {rows.map(row=>
           <tr>
-            <td>
-              <div>
-              <span>VII A</span>
-              <span>Mat</span>
-              </div>
- 
-            </td>
-            <td>
-            <div>
-              <span>VII A</span>
-              <span>Mat</span>
-              </div>
- 
-            </td>
-            <td>
-            <div>
-              <span>VII A</span>
-              <span>Mat</span>
-              </div>
- 
-            </td>
-            <td>
-            <div>
-              <span>VII A</span>
-              <span>Mat</span>
-              </div>
- 
-            </td>
+            {row.map((column:any,index:number)=><td onClick={()=>callbackFn(column,index)}>{column}</td>)}
           </tr>
+          )}
         </tbody>
       </table>
     </div>

@@ -6,8 +6,7 @@ export const ScheduleDetail = styled('div')(({ theme }) => ({
     display: 'flex',
     columnGap: '16px',
     alignItems: 'center',
-    paddingTop:'16px',
-    paddingBottom:'20px',
+    padding:'16px 20px 20px',
 
     ".detail__period": {
         display: 'flex',
@@ -75,6 +74,12 @@ export const ScheduleDetail = styled('div')(({ theme }) => ({
         fontSize:'16px',
         fontWeight:'700'
 
+    },
+    "span.details__task-ontime":{
+        borderColor:theme.palette.custom.blue,color:theme.palette.custom.backgroundBlack,backgroundColor:theme.palette.custom.lightBlue
+    },
+    "span.details__task-pending":{
+        borderColor:theme.palette.custom.borderRed,color:theme.palette.custom.borderRed,backgroundColor:theme.palette.custom.transparentRed
     }
 
 }))

@@ -12,12 +12,7 @@ export const SideNavComponent = styled('div')(({ theme }) => ({
 
     
     },
-    '*::-webkit-scrollbar': {
-        width: '6px'
-    },
-    '*::-webkit-scrollbar-thumb':{
-        backgroundColor:theme.palette.custom.borderLightGrey
-    },
+
     '.sideNav .MuiDrawer-paper': {
         position:'relative',
         border:'none'
