@@ -1,13 +1,13 @@
 import { Box } from "@mui/material";
 import { ScheduleDetail } from "../../styles/scheduleDetail";
-const subjectDetails = (key: string, value: string, task?: string[]) => {
+const subjectDetails = (key: string, value: string, task?: {status:string,task:string}[]) => {
   return (
     <div className="details__text">
       <h6>{key}</h6>
       {task ? (
         <div className="details__task">
-          {task.map((elem: string) => (
-            <span style={{borderColor:'#417EE3',color:"#0E0E0E",backgroundColor:"#E8F1FF"}}>{elem}</span>
+          {task.map((elem: {status:string,task:string}) => (
+            <span className={elem.status==="pending"?'details__task-pending':'details__task-ontime'}>{elem.task}</span>
           ))}
         </div>
       ) : (
@@ -19,18 +19,22 @@ const subjectDetails = (key: string, value: string, task?: string[]) => {
     </div>
   );
 };
-const ScheduleDetailComponent = () => {
+const ScheduleDetailComponent = ({detail}:{detail:{
+  period: string;
+  class: string;
+  subject: string;
+}}) => {
   return (
     <ScheduleDetail>
-      <div className="detail__period">P3</div>
+      <div className="detail__period">{detail.period}</div>
       <Box className="detail__desc">
         <div className="detail__subject">
-          {subjectDetails("class", "V1 B")}
-          {subjectDetails("class", "V1 B")}
+          {subjectDetails("Class", detail.class)}
+          {subjectDetails("Subject", detail.subject)}
         </div>
         <div className="detail__subject detail__subject-topic">
           {subjectDetails("class", "V1 B")}
-          {subjectDetails("class", "", ["A", "B", "C"])}
+          {subjectDetails("Tasks", "", [{status:"on-time",task:"C"},{status:"pending",task:"H"},{status:"on-time",task:"A"}])}
         </div>
       </Box>
     </ScheduleDetail>

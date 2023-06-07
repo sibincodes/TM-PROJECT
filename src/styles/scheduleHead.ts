@@ -15,6 +15,35 @@ export const ScheduleHead = styled('div')(({ theme }) => ({
         width:'27px',
         height:'27px',
 
+    },
+    "button":{
+        padding:'4px 17px',
+        border:'1px solid',
+        borderColor:`${theme.palette.custom.backgroundBlack} !important`,
+        color:theme.palette.custom.backgroundBlack,
+        borderRadius:'200px',
+        fontSize:'14px',
+        lineHeight:'21px',
+        fontWeight:'500',
+        backgroundColor:'white !important'
+    },
+    ".MuiButton-startIcon":{
+
+        margin:'0 13px 0 0',
+        transform:'rotate(180deg)',
+        display:'block'
+    },
+    ".MuiButton-startIcon svg path":{
+        overflow:'visible',
+
+    },
+    ".MuiButton-endIcon":{
+        margin:'0 0px 0 13px'
+    },
+    "svg path":{
+        stroke: '#0E0E0E',
+        strokeWidth: '1.5px'
+    
     }
 
 }));

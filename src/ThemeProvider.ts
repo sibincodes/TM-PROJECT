@@ -27,7 +27,11 @@ export const theme = createTheme({
             paleBlue:'#EAECF0',
             transparentBlue:'#F7F9FF',
             backgroundBlack:'#0E0E0E',
-            blackOlive:"#3F3F3F"
+            blackOlive:"#3F3F3F",
+           lightBlue:'#E8F1FF',
+           red:'#E73025',
+           borderRed:'#EF2424',
+           transparentRed:'#FFF0F0'
         },
     },
     typography: {

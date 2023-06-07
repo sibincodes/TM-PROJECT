@@ -25,3 +25,11 @@ code {
   line-height:0;
   box-sizing: border-box;
 }
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height:6px
+}
+*::-webkit-scrollbar-thumb{
+  background-color:#DDE2E4
+}
