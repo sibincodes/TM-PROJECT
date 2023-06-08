@@ -37,6 +37,7 @@ const ScheduleTableComponent = ({
           columns={columns}
           rows={{ rows: [rows] }}
           callbackFn={cellHighlightHandler}
+          sort={false}
         />
       </div>
     </ScheduleTable>

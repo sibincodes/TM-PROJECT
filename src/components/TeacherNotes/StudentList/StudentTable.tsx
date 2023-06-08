@@ -8,13 +8,12 @@ import { DropDown } from "../../CommonComponents/DropDownMenu/drop-down-menu";
 import TableComponent from "../../CommonComponents/Table/TableComponents";
 
 const StudentTableComponent = () => {
-
   const users = [
     { name: "gowri", marks: 50 },
     { name: "gowri", marks: 50 },
     { name: "gowri", marks: 50 },
   ];
-  const columns = [<AvatarComponent name="All Students" />, <Button/>];
+  const columns = [<AvatarComponent name="All Students" />, <Button />];
   const rows = users.map((elem) => [
     <AvatarComponent name={elem.name} />,
     <InputComponent />,
@@ -26,6 +25,7 @@ const StudentTableComponent = () => {
         columns={columns}
         rows={{ rows: rows }}
         callbackFn={selectHandler}
+        sort ={true}
       />
     </StudentList>
   );
@@ -54,36 +54,30 @@ const InputComponent = () => {
 };
 
 const Button = () => {
-  const dropdownStyles={
-    ".MuiMenuItem-root":{
-      padding:'10px 16px',
-      marginBottom:'2px',
-      fontSize:'14px',
-      lineHeight:'18px',
-      fontWeight:'500',
-      color:theme.palette.custom.backgroundBlack,
-      borderLeft:'2px solid',
-      borderColor:'transparent'
-
-
+  const dropdownStyles = {
+    ".MuiMenuItem-root": {
+      padding: "10px 16px",
+      marginBottom: "2px",
+      fontSize: "14px",
+      lineHeight: "18px",
+      fontWeight: "500",
+      color: theme.palette.custom.backgroundBlack,
+      borderLeft: "2px solid",
+      borderColor: "transparent",
     },
-    ".MuiMenuItem-root:hover":{
-      backgroundColor:theme.palette.custom.aliceBlue,
-      borderColor:theme.palette.custom.darkBlue
-
-    }
-
-
-
-  }
+    ".MuiMenuItem-root:hover": {
+      backgroundColor: theme.palette.custom.aliceBlue,
+      borderColor: theme.palette.custom.darkBlue,
+    },
+  };
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const menuOptions = [
-    {  listItem: "View All(55)" },
-    {  listItem: "View All(55)" },
-    {  listItem: "View All(55)" },
-    {  listItem: "View All(55)" },
-    {  listItem: "View All(55)" },
+    { listItem: "View All(55)" },
+    { listItem: "View All(55)" },
+    { listItem: "View All(55)" },
+    { listItem: "View All(55)" },
+    { listItem: "View All(55)" },
   ];
   const ButtonActionHandler = (
     event: React.MouseEvent<HTMLButtonElement | null>
@@ -99,7 +93,7 @@ const Button = () => {
       <ButtonComponent
         name="Filter by"
         buttonType="header"
-        endIcon={<ReactSVG src='/icons/dropdown.svg'/>}
+        endIcon={<ReactSVG src="/icons/dropdown.svg" />}
         aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
@@ -111,7 +105,6 @@ const Button = () => {
         handleMenuClose={handleMenuClose}
         style={dropdownStyles}
         menuOptions={menuOptions}
-
       />
     </>
   );
