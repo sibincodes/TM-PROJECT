@@ -9,23 +9,22 @@ export const StudentList = styled('div')(({ theme }) => ({
 
     "tbody tr": {
         borderTop: '1px solid',
-        borderLeft:'2px solid',
+        borderLeft: '3px solid',
         borderColor: theme.palette.custom.paleBlue,
-        borderLeftColor:'transparent',
+        borderLeftColor: 'transparent',
 
         cursor: "pointer"
     },
 
     "tbody tr:hover": {
         backgroundColor: theme.palette.custom.aliceBlue,
-        borderLeftColor:theme.palette.custom.darkBlue,
-        
+
 
     },
-"th:first-child,td:first-child":{
-    paddingRight:'0'
+    "th:first-child,td:first-child": {
+        paddingRight: '0'
 
-},
+    },
     "table": {
         border: '1px solid',
         borderColor: theme.palette.custom.paleBlue,
@@ -34,28 +33,34 @@ export const StudentList = styled('div')(({ theme }) => ({
         minWidth: '325px'
 
     },
-    ".MuiCheckbox-root":{
-        padding:'0'
+    ".row--selected":{
+        backgroundColor: theme.palette.custom.aliceBlue,
+        borderLeftColor:theme.palette.custom.borderBlue
 
     },
-    ".MuiCheckbox-root div":{
-        width:'20px',
-        height:"20px",
-        display:'flex',
-        justifyContent:'center',
-        alignItems:'center'
+    ".MuiCheckbox-root": {
+        padding: '0'
 
     },
-".MuiCheckbox-root svg":{
-    width:'16px',
-    height:'16px',
+    ".MuiCheckbox-root div": {
+        width: '20px',
+        height: "20px",
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
 
-},
-".Mui-checked svg":{
-    width:"20px",
-    height:'20px'
+    },
+    ".MuiCheckbox-root svg": {
+        width: '16px',
+        height: '16px',
 
-},
+    },
+    ".Mui-checked svg": {
+        width: "20px",
+        height: '20px'
+
+    },
+
     "thead .MuiButton-root": {
         fontSize: '14px',
         lineHeight: '18px',
@@ -126,7 +131,7 @@ export const StudentList = styled('div')(({ theme }) => ({
 
 
     },
-    ".list__marks .list__text":{
+    ".list__marks .list__text": {
         position: 'relative',
         top: '3px',
     },

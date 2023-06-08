@@ -1,5 +1,5 @@
 import { Checkbox } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ReactSVG } from "react-svg";
 
 const TableComponent = ({
@@ -16,16 +16,17 @@ const TableComponent = ({
     name: string;
     age: number;
   }
-  const [selectedRows, setSelectedRows] = useState<any[]>([]);
-  const handleRowClick = (index: number, rowData: any) => {
-    const isSelected = selectedRows.some((item) => item.id === rowData.id);
-    console.log("isSelected", isSelected);
+  const [selectedRows, setSelectedRows] = useState<{[index:number]:boolean}>({});
+useEffect(()=>{
+rows.map((elem,index)=>{
+  setSelectedRows(prev=>({...prev,[index]:false}))
 
-    if (isSelected) {
-      setSelectedRows(selectedRows.filter((row) => row.id !== rowData.id));
-    } else {
-      setSelectedRows([...selectedRows, rowData]);
-    }
+})
+
+},[])
+
+  const handleRowClick = (index: number, rowData: any) => {
+    setSelectedRows(prev=>({...prev,[index]:!prev[index]}))
   };
 
   return (
@@ -46,11 +47,12 @@ const TableComponent = ({
         </thead>
         <tbody>
           {rows.map((row, index) => (
-            <tr onClick={() => handleRowClick(index, row)}>
+            <tr onClick={() => handleRowClick(index, row)} className={selectedRows[index]?'row--selected':'row--unselected'}>
               <>
                 {" "}
                 <td>
                   <Checkbox
+                  checked={selectedRows[index]}
                     icon={<ReactSVG src="/icons/checkbox.svg" />}
                     checkedIcon={<ReactSVG src="/icons/checkbox-tick.svg" />}
                   />
