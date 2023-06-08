@@ -34,11 +34,10 @@ const TableComponent = ({
         <thead>
           <tr>
             <th>
-            <Checkbox
- icon={<ReactSVG src="/icons/checkbox.svg" />}
- checkedIcon={<ReactSVG src="/icons/checkbox-tick.svg" />}
-      />
-  
+              <Checkbox
+                icon={<ReactSVG src="/icons/checkbox.svg" />}
+                checkedIcon={<ReactSVG src="/icons/checkbox-tick.svg" />}
+              />
             </th>
             {columns.map((col: any, index: number) => (
               <th onClick={() => callbackFn(col, index)}>{col}</th>
@@ -51,10 +50,10 @@ const TableComponent = ({
               <>
                 {" "}
                 <td>
-                <Checkbox
- icon={<ReactSVG src="/icons/checkbox.svg" />}
- checkedIcon={<ReactSVG src="/icons/checkbox-tick.svg" />}
-      />
+                  <Checkbox
+                    icon={<ReactSVG src="/icons/checkbox.svg" />}
+                    checkedIcon={<ReactSVG src="/icons/checkbox-tick.svg" />}
+                  />
                 </td>
                 {row.map((column: any, index: number) => (
                   <td onClick={() => callbackFn(column, index)}>{column}</td>
