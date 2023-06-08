@@ -35,7 +35,8 @@ export const theme = createTheme({
            sonicSilver:"#757575",
            aliceBlue:"#EBF0FE",
            darkBlue:'#1381EF',
-           borderGrey:'#D0D5DD'
+           borderGrey:'#D0D5DD',
+           borderBlue:'#1183F4'
         },
     },
     typography: {

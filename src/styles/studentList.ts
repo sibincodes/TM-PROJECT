@@ -9,7 +9,7 @@ export const StudentList = styled('div')(({ theme }) => ({
 
     "tbody tr": {
         borderTop: '1px solid',
-        borderLeft: '2px solid',
+        borderLeft: '3px solid',
         borderColor: theme.palette.custom.paleBlue,
         borderLeftColor: 'transparent',
 
@@ -31,6 +31,11 @@ export const StudentList = styled('div')(({ theme }) => ({
         backgroundColor: 'white',
         borderCollapse: "collapse",
         minWidth: '325px'
+
+    },
+    ".row--selected":{
+        backgroundColor: theme.palette.custom.aliceBlue,
+        borderLeftColor:theme.palette.custom.borderBlue
 
     },
     ".MuiCheckbox-root": {
