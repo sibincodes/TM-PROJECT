@@ -185,7 +185,7 @@ export function TopNav() {
     >
       2021-2022
     </Link>,
-    <Typography key="3">{pageData?.routes?.title} </Typography>,
+    <Typography key="3">{} </Typography>,
   ];
   return (
     <Header>
