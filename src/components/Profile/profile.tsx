@@ -17,19 +17,26 @@ export const Profile = () => {
   const handleMenuClose = () => {
     setAnchorEl(null);
   }
+  const menuOptions = [
+    { src: "./ListIcons/classwork.svg", listItem: "Classwork" },
+    { src: "./ListIcons/homework.svg", listItem: "Home Work" },
+    { src: "./ListIcons/assignment.svg", listItem: "Assignment" },
+    { src: "./ListIcons/project.svg", listItem: "Project" },
+    { src: "./ListIcons/diary.svg", listItem: "Diary" },
+  ];
   const addIconButton = <img src={addButton} />;
   return (
     <Layout>
       <>
       Profile
       <ButtonComponent name ='Add New' buttonType='add' 
-              icon={addIconButton}
+              startIcon={addIconButton}
               aria-controls={open ? "basic-menu" : undefined}
               aria-haspopup="true"
               aria-expanded={open ? "true" : undefined}
               actionHandler={(e)=>ButtonActionHandler(e)}
       />
-      <DropDown isOpen={open} anchorEl={anchorEl} handleMenuClose={handleMenuClose}/>
+      <DropDown isOpen={open} anchorEl={anchorEl} handleMenuClose={handleMenuClose} menuOptions={menuOptions}/>
       </>
     </Layout>
   )

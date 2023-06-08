@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { useState } from "react";
-import Wrapper from "../CommonComponents/BoxWrapper/Wrapper";
+import Wrapper from "../../CommonComponents/BoxWrapper/Wrapper";
 import ScheduleDetailComponent from "./ScheduleDetail";
 import ScheduleHeadComponent from "./ScheduleHead";
 import ScheduleTableComponent from "./ScheduleTable";

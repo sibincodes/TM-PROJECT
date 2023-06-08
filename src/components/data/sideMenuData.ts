@@ -35,7 +35,7 @@ export const sideMenuOptions = [{
     {
         icon: '/icons/Circular.svg',
         title: 'Circular',
-        path: '/circular'
+        path: '/profile'
     },
     {
         icon: '/icons/Recognition.svg',

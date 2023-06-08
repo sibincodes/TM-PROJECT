@@ -31,7 +31,12 @@ export const theme = createTheme({
            lightBlue:'#E8F1FF',
            red:'#E73025',
            borderRed:'#EF2424',
-           transparentRed:'#FFF0F0'
+           transparentRed:'#FFF0F0',
+           sonicSilver:"#757575",
+           aliceBlue:"#EBF0FE",
+           darkBlue:'#1381EF',
+           borderGrey:'#D0D5DD',
+           borderBlue:'#1183F4'
         },
     },
     typography: {

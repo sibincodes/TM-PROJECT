@@ -16,7 +16,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { useLocation } from "react-router-dom";
 import { Header } from "../../styles/header";
-import { Breadcrumbs, Link } from "@mui/material";
+import { Avatar, Breadcrumbs, Link } from "@mui/material";
 import { RoutesContext } from "../../context/routes-context-provider";
 import { RoutesContextType } from "../../@types/routes-context-type";
 import { ReactSVG } from "react-svg";
@@ -185,7 +185,7 @@ export function TopNav() {
     >
       2021-2022
     </Link>,
-    <Typography key="3">{pageData?.routes?.title} </Typography>,
+    <Typography key="3">{} </Typography>,
   ];
   return (
     <Header>
@@ -275,8 +275,9 @@ export function TopNav() {
                 disableFocusRipple
                 disableRipple
               >
-                <img src="/HeaderIcons/Avatar.png" />
-              </IconButton>
+                <Avatar src="/HeaderIcons/Avatar.png" />
+
+             </IconButton>
             </Box>
           </Toolbar>
         </Toolbar>

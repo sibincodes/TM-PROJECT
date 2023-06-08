@@ -5,7 +5,8 @@ import Button from "@mui/material/Button";
 export const ButtonComponent = ({
   styles,
   name,
-  icon,
+  startIcon,
+  endIcon,
   typeVariant,
   actionHandler,
   type,
@@ -13,7 +14,8 @@ export const ButtonComponent = ({
 }: {
   styles?: SxProps;
   name: string;
-  icon?: JSX.Element;
+  startIcon?: JSX.Element;
+  endIcon?: JSX.Element;
   typeVariant?: "text" | "outlined" | "contained" | undefined;
   actionHandler?: (event: React.MouseEvent<HTMLButtonElement | null>) => void;
   type?: "submit";
@@ -44,7 +46,8 @@ export const ButtonComponent = ({
         variant={typeVariant || "outlined"}
         sx={buttonStyles}
         disableRipple
-        startIcon={icon}
+        startIcon={startIcon}
+        endIcon={endIcon}
         onClick={actionHandler}
         type={type || "button"}
       >
