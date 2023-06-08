@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { ScheduleTable } from "../../styles/ScheduleTable";
-import TableComponent from "../CommonComponents/Table/TableComponents";
+import { ScheduleTable } from "../../../styles/ScheduleTable";
+import TableComponent from "../../CommonComponents/Table/TableComponents";
 
 const ScheduleTableComponent = ({
   selectedCell,

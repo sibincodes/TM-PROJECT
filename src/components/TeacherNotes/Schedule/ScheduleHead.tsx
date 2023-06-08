@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { ReactSVG } from "react-svg";
-import { ScheduleHead } from "../../styles/scheduleHead";
+import { ScheduleHead } from "../../../styles/scheduleHead";
 
 const ScheduleHeadComponent = () => {
     const icons=<ReactSVG

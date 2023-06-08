@@ -35,7 +35,7 @@ export const ScheduleDetail = styled('div')(({ theme }) => ({
 
     },
     ".detail__subject-topic":{
-        rowGap: '16px'
+        rowGap: '12px'
 
 
     },

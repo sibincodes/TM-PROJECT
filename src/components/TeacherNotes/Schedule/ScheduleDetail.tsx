@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { ScheduleDetail } from "../../styles/scheduleDetail";
+import { ScheduleDetail } from "../../../styles/scheduleDetail";
 const subjectDetails = (key: string, value: string, task?: {status:string,task:string}[]) => {
   return (
     <div className="details__text">

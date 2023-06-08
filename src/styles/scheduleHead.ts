@@ -33,10 +33,6 @@ export const ScheduleHead = styled('div')(({ theme }) => ({
         transform:'rotate(180deg)',
         display:'block'
     },
-    ".MuiButton-startIcon svg path":{
-        overflow:'visible',
-
-    },
     ".MuiButton-endIcon":{
         margin:'0 0px 0 13px'
     },
