@@ -34,7 +34,8 @@ export const theme = createTheme({
            transparentRed:'#FFF0F0',
            sonicSilver:"#757575",
            aliceBlue:"#EBF0FE",
-           darkBlue:'#1381EF'
+           darkBlue:'#1381EF',
+           borderGrey:'#D0D5DD'
         },
     },
     typography: {

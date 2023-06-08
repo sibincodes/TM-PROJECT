@@ -1,35 +1,31 @@
+import { Checkbox } from "@mui/material";
 import { useState } from "react";
+import { ReactSVG } from "react-svg";
 
-const TableComponent = ({ columns, rows:{rows},callbackFn}: { columns: any[]; rows: {rows:any[]} ;callbackFn:(sub:any,index:number)=>void}) => {
+const TableComponent = ({
+  columns,
+  rows: { rows },
+  callbackFn,
+}: {
+  columns: any[];
+  rows: { rows: any[] };
+  callbackFn: (sub: any, index: number) => void;
+}) => {
   interface RowData {
     id: number;
     name: string;
     age: number;
   }
-  const [checkedRows, setCheckedRows] = useState<number[]>([]);
-  const handleCheckboxChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-    rowId: number
-  ) => {
-    if (event.target.checked) {
-      setCheckedRows([...checkedRows, rowId]);
+  const [selectedRows, setSelectedRows] = useState<any[]>([]);
+  const handleRowClick = (index: number, rowData: any) => {
+    const isSelected = selectedRows.some((item) => item.id === rowData.id);
+    console.log("isSelected", isSelected);
+
+    if (isSelected) {
+      setSelectedRows(selectedRows.filter((row) => row.id !== rowData.id));
     } else {
-      setCheckedRows(checkedRows.filter((id) => id !== rowId));
+      setSelectedRows([...selectedRows, rowData]);
     }
-  };
-
-  const getCheckedRowsData = () => {
-    const checkedRowData: RowData[] = checkedRows.map((rowId) => {
-      // Retrieve the data for the checked row based on the rowId
-      // Replace the following example with your actual data retrieval logic
-      return {
-        id: rowId,
-        name: `Name ${rowId}`,
-        age: rowId * 10,
-      };
-    });
-
-    console.log(checkedRowData);
   };
 
   return (
@@ -37,16 +33,35 @@ const TableComponent = ({ columns, rows:{rows},callbackFn}: { columns: any[]; ro
       <table>
         <thead>
           <tr>
-            {columns.map((col:any,index:number)=> <th onClick={()=>callbackFn(col,index)}>{col}</th>)}
-     
+            <th>
+            <Checkbox
+ icon={<ReactSVG src="/icons/checkbox.svg" />}
+ checkedIcon={<ReactSVG src="/icons/checkbox-tick.svg" />}
+      />
+  
+            </th>
+            {columns.map((col: any, index: number) => (
+              <th onClick={() => callbackFn(col, index)}>{col}</th>
+            ))}
           </tr>
         </thead>
         <tbody>
-          {rows.map(row=>
-          <tr>
-            {row.map((column:any,index:number)=><td onClick={()=>callbackFn(column,index)}>{column}</td>)}
-          </tr>
-          )}
+          {rows.map((row, index) => (
+            <tr onClick={() => handleRowClick(index, row)}>
+              <>
+                {" "}
+                <td>
+                <Checkbox
+ icon={<ReactSVG src="/icons/checkbox.svg" />}
+ checkedIcon={<ReactSVG src="/icons/checkbox-tick.svg" />}
+      />
+                </td>
+                {row.map((column: any, index: number) => (
+                  <td onClick={() => callbackFn(column, index)}>{column}</td>
+                ))}
+              </>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

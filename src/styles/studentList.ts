@@ -9,13 +9,23 @@ export const StudentList = styled('div')(({ theme }) => ({
 
     "tbody tr": {
         borderTop: '1px solid',
+        borderLeft:'2px solid',
         borderColor: theme.palette.custom.paleBlue,
-        cursor:"pointer"
-    },
-    "tbody tr:hover":{
-        backgroundColor:theme.palette.custom.aliceBlue
+        borderLeftColor:'transparent',
+
+        cursor: "pointer"
     },
 
+    "tbody tr:hover": {
+        backgroundColor: theme.palette.custom.aliceBlue,
+        borderLeftColor:theme.palette.custom.darkBlue,
+        
+
+    },
+"th:first-child,td:first-child":{
+    paddingRight:'0'
+
+},
     "table": {
         border: '1px solid',
         borderColor: theme.palette.custom.paleBlue,
@@ -24,21 +34,43 @@ export const StudentList = styled('div')(({ theme }) => ({
         minWidth: '325px'
 
     },
-    "thead .MuiButton-root":{
+    ".MuiCheckbox-root":{
+        padding:'0'
+
+    },
+    ".MuiCheckbox-root div":{
+        width:'20px',
+        height:"20px",
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center'
+
+    },
+".MuiCheckbox-root svg":{
+    width:'16px',
+    height:'16px',
+
+},
+".Mui-checked svg":{
+    width:"20px",
+    height:'20px'
+
+},
+    "thead .MuiButton-root": {
         fontSize: '14px',
         lineHeight: '18px',
         fontWeight: '500',
         color: theme.palette.custom.backgroundBlack
     },
-    " thead .MuiButton-endIcon":{
+    " thead .MuiButton-endIcon": {
 
-        marginLeft:'11px',
-        marginRight:'0',
-        marginTop:'-4px'
+        marginLeft: '11px',
+        marginRight: '0',
+        marginTop: '-4px'
 
     },
-    ".MuiMenuItem-root":{
-        backgroundColor:theme.palette.custom.aliceBlue
+    ".MuiMenuItem-root": {
+        backgroundColor: theme.palette.custom.aliceBlue
 
     },
     ".list__left": {
@@ -90,13 +122,16 @@ export const StudentList = styled('div')(({ theme }) => ({
         border: 'none',
         textAlign: 'center',
         textIndent: '7px',
-        backgroundColor:'transparent'
+        backgroundColor: 'transparent'
 
 
     },
-    ".list__bar": {
+    ".list__marks .list__text":{
         position: 'relative',
         top: '3px',
+    },
+    ".list__bar": {
+
         left: '4px',
 
 
