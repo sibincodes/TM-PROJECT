@@ -29,7 +29,7 @@ const TableComponent = ({
   }, []);
 
   const handleRowClick = (index?: number, rowData?: any) => {
-    if (index) setSelectedRows((prev) => ({ ...prev, [index]: !prev[index] }))
+    if (index?.toString()) setSelectedRows((prev) => ({ ...prev, [index]: !prev[index] }))
     
 
     else{
