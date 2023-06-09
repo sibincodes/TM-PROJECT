@@ -8,10 +8,10 @@ import { DropDown } from "../../CommonComponents/DropDownMenu/drop-down-menu";
 import TableComponent from "../../CommonComponents/Table/TableComponents";
 
 //Avatar and Name
-const AvatarComponent = ({ name }: { name: string }) => {
+const AvatarComponent = ({ name,img }: { name: string;img?:string }) => {
   return (
     <Box className="list__left">
-      <Avatar src="/icons/user.svg" className="list__image" />
+      <Avatar src={img || "/icons/user.svg"} className="list__image" />
       <h4 className="list__text">{name}</h4>
     </Box>
   );
@@ -89,13 +89,42 @@ const Button = () => {
 
 const StudentTableComponent = () => {
   const users = [
-    { name: "gowri", marks: 50 },
-    { name: "gowri", marks: 50 },
-    { name: "gowri", marks: 50 },
+ 
+      {
+        "id": 1,
+        "student": {
+          "id": 33,
+          "fullname": "Jenna",
+          "class": "V",
+          "section": "A",
+          "avatar": "https://i.pravatar.cc/150?img=4"
+        },
+        "task": {
+          "id": 400,
+          "type": "assignment",
+          "details": {}
+        }
+      },
+      {
+        "id": 2,
+        "student": {
+          "id": 231,
+          "fullname": "Nazim",
+          "class": "V",
+          "section": "A",
+          "avatar": "https://i.pravatar.cc/150?img=3"
+        },
+        "task": {
+          "id": 400,
+          "type": "assignment",
+          "details": {}
+        }
+      }
+    
   ];
   const columns = [<AvatarComponent name="All Students" />, <Button />];
   const rows = users.map((elem) => [
-    <AvatarComponent name={elem.name} />,
+    <AvatarComponent name={elem.student.fullname} img={elem.student.avatar} />,
     <InputComponent />,
   ]);
   const selectHandler = (col: any, index: number) => {};
