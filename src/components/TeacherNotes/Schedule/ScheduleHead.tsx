@@ -5,6 +5,7 @@ import { ScheduleHead } from "../../../styles/scheduleHead";
 import { useState } from "react";
 import DateCalendarValue from "./ScheduleCalendar";
 import dayjs, { Dayjs } from "dayjs";
+import { Link } from "react-router-dom";
 
 const ScheduleHeadComponent = () => {
   const icons = <ReactSVG src="/HeaderIcons/next.svg" />;
@@ -24,8 +25,16 @@ const ScheduleHeadComponent = () => {
       >
         <span onClick={() => setOpen((prev) => !prev)}>Date</span>
       </Button>
-      {open && <DateCalendarValue setOpen={setOpen} value={value} setValue={setValue}/>}
-      <img src="/icons/schedule.png" className="head__arrow" />
+      {open && (
+        <DateCalendarValue
+          setOpen={setOpen}
+          value={value}
+          setValue={setValue}
+        />
+      )}
+      <Link to="/schedule">
+        <img src="/icons/schedule.png" className="head__arrow" />
+      </Link>
     </ScheduleHead>
   );
 };
