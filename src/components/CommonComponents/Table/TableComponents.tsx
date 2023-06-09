@@ -6,12 +6,12 @@ const TableComponent = ({
   columns,
   rows: { rows },
   callbackFn,
-  sort
+  sort,
 }: {
   columns: any[];
   rows: { rows: any[] };
   callbackFn: (sub: any, index: number) => void;
-  sort:boolean
+  sort: boolean;
 }) => {
   interface RowData {
     id: number;
@@ -21,7 +21,7 @@ const TableComponent = ({
   const [selectedRows, setSelectedRows] = useState<{
     [index: number]: boolean;
   }>({});
-  const [allSelected,setAllSelected]=useState(false);
+  const [allSelected, setAllSelected] = useState(false);
   useEffect(() => {
     rows.map((elem, index) => {
       setSelectedRows((prev) => ({ ...prev, [index]: false }));
@@ -29,16 +29,15 @@ const TableComponent = ({
   }, []);
 
   const handleRowClick = (index?: number, rowData?: any) => {
-    if (index?.toString()) setSelectedRows((prev) => ({ ...prev, [index]: !prev[index] }))
-    
-
-    else{
+    if (index?.toString())
+      setSelectedRows((prev) => ({ ...prev, [index]: !prev[index] }));
+    else {
       rows.map((elem, index) => {
-      console.log(allSelected)
-      setSelectedRows((prev) => ({ ...prev, [index]: !allSelected }));
-    });
-    setAllSelected(prev=>!prev)
-  }
+        console.log(allSelected);
+        setSelectedRows((prev) => ({ ...prev, [index]: !allSelected }));
+      });
+      setAllSelected((prev) => !prev);
+    }
   };
 
   return (
@@ -46,19 +45,18 @@ const TableComponent = ({
       <table>
         <thead>
           <tr>
-           {sort &&
-           <th>
-           <Checkbox
-           checked={allSelected}
-           onChange={()=>{
-             
-             handleRowClick();
-           }}
-             icon={<ReactSVG src="/icons/checkbox.svg" />}
-             checkedIcon={<ReactSVG src="/icons/checkbox-tick.svg" />}
-           />
-         </th>
-           } 
+            {sort && (
+              <th>
+                <Checkbox
+                  checked={allSelected}
+                  onChange={() => {
+                    handleRowClick();
+                  }}
+                  icon={<ReactSVG src="/icons/checkbox.svg" />}
+                  checkedIcon={<ReactSVG src="/icons/checkbox-tick.svg" />}
+                />
+              </th>
+            )}
             {columns.map((col: any, index: number) => (
               <th onClick={() => callbackFn(col, index)}>{col}</th>
             ))}
@@ -67,20 +65,22 @@ const TableComponent = ({
         <tbody>
           {rows.map((row, index) => (
             <tr
-              onClick={() => handleRowClick(index, row)}
               className={
                 selectedRows[index] ? "row--selected" : "row--unselected"
               }
             >
               <>
                 {" "}
-                {sort && <td>
-                  <Checkbox
-                    checked={selectedRows[index] || false}
-                    icon={<ReactSVG src="/icons/checkbox.svg" />}
-                    checkedIcon={<ReactSVG src="/icons/checkbox-tick.svg" />}
-                  />
-                </td>}
+                {sort && (
+                  <td>
+                    <Checkbox
+                      onChange={() => handleRowClick(index, row)}
+                      checked={selectedRows[index] || false}
+                      icon={<ReactSVG src="/icons/checkbox.svg" />}
+                      checkedIcon={<ReactSVG src="/icons/checkbox-tick.svg" />}
+                    />
+                  </td>
+                )}
                 {row.map((column: any, index: number) => (
                   <td onClick={() => callbackFn(column, index)}>{column}</td>
                 ))}
