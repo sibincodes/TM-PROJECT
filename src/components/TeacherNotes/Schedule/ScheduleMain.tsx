@@ -9,7 +9,6 @@ const ScheduleMain = () => {
   const [selectedCell, setCell] = useState(0);
 
   const cellHighlightHandler = (sub: any, index: number) => {
-    console.log(sub);
     setCell(index);
   };
 

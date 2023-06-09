@@ -24,17 +24,16 @@ const TableComponent = ({
   const [allSelected, setAllSelected] = useState(false);
   useEffect(() => {
     rows.map((elem, index) => {
-      setSelectedRows((prev) => ({ ...prev, [index]: false }));
+      setSelectedRows((prev) => ({ ...prev, [elem.rowData.id]: false }));
     });
   }, []);
 
   const handleRowClick = (index?: number, rowData?: any) => {
     if (index?.toString())
-      setSelectedRows((prev) => ({ ...prev, [index]: !prev[index] }));
+      setSelectedRows((prev) => ({ ...prev, [rowData.id]: !prev[rowData.id] }));
     else {
       rows.map((elem, index) => {
-        console.log(allSelected);
-        setSelectedRows((prev) => ({ ...prev, [index]: !allSelected }));
+        setSelectedRows((prev) => ({ ...prev, [elem.rowData.id]: !allSelected }));
       });
       setAllSelected((prev) => !prev);
     }
@@ -66,7 +65,7 @@ const TableComponent = ({
           {rows.map((row, index) => (
             <tr
               className={
-                selectedRows[index] ? "row--selected" : "row--unselected"
+                selectedRows[row.rowData.id] ? "row--selected" : "row--unselected"
               }
             >
               <>
@@ -75,7 +74,7 @@ const TableComponent = ({
                   <td>
                     <Checkbox
                       onChange={() => handleRowClick(index, row.rowData)}
-                      checked={selectedRows[index] || false}
+                      checked={selectedRows[row.rowData.id] || false}
                       icon={<ReactSVG src="/icons/checkbox.svg" />}
                       checkedIcon={<ReactSVG src="/icons/checkbox-tick.svg" />}
                     />
