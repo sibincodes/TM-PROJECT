@@ -136,7 +136,7 @@ const ScheduleMain = () => {
       task: {
         calss_work: true,
         homework: true,
-        assignment: true,
+        assignment: false,
       },
       approved_by: {
         id: 3,

@@ -11,7 +11,10 @@ const ScheduleTableComponent = ({
   cellHighlightHandler: (sub: any) => void;
   timeTable: any[];
 }) => {
-  const columns = timeTable.map((elem) => ({col:elem.period,colData:elem}));
+  const columns = timeTable.map((elem) => ({
+    col: elem.period,
+    colData: elem,
+  }));
   const rows = timeTable.map((elem, index) =>
     elem.class.length > 0
       ? {
@@ -27,9 +30,9 @@ const ScheduleTableComponent = ({
               </div>
               <div
                 className={
-                  selectedCell === elem.id
-                    ? "cell-dot cell--highlight"
-                    : "cell-dot"
+                  Object.values(elem.task).reduce((state,elem)=>{return state && elem},true)
+                    ? "cell-dot"
+                    : "cell-dot cell--highlight"
                 }
               ></div>
             </>
