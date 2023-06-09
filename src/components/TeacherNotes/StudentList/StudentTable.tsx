@@ -8,7 +8,7 @@ import { DropDown } from "../../CommonComponents/DropDownMenu/drop-down-menu";
 import TableComponent from "../../CommonComponents/Table/TableComponents";
 
 //Avatar and Name
-const AvatarComponent = ({ name,img }: { name: string;img?:string }) => {
+const AvatarComponent = ({ name, img }: { name: string; img?: string }) => {
   return (
     <Box className="list__left">
       <Avatar src={img || "/icons/user.svg"} className="list__image" />
@@ -89,52 +89,61 @@ const Button = () => {
 
 const StudentTableComponent = () => {
   const users = [
- 
-      {
-        "id": 1,
-        "student": {
-          "id": 33,
-          "fullname": "Jenna",
-          "class": "V",
-          "section": "A",
-          "avatar": "https://i.pravatar.cc/150?img=4"
-        },
-        "task": {
-          "id": 400,
-          "type": "assignment",
-          "details": {}
-        }
+    {
+      id: 1,
+      student: {
+        id: 33,
+        fullname: "Jenna",
+        class: "V",
+        section: "A",
+        avatar: "https://i.pravatar.cc/150?img=4",
       },
-      {
-        "id": 2,
-        "student": {
-          "id": 231,
-          "fullname": "Nazim",
-          "class": "V",
-          "section": "A",
-          "avatar": "https://i.pravatar.cc/150?img=3"
-        },
-        "task": {
-          "id": 400,
-          "type": "assignment",
-          "details": {}
-        }
-      }
-    
+      task: {
+        id: 400,
+        type: "assignment",
+        details: {},
+      },
+    },
+    {
+      id: 2,
+      student: {
+        id: 231,
+        fullname: "Nazim",
+        class: "V",
+        section: "A",
+        avatar: "https://i.pravatar.cc/150?img=3",
+      },
+      task: {
+        id: 400,
+        type: "assignment",
+        details: {},
+      },
+    },
   ];
   const columns = [<AvatarComponent name="All Students" />, <Button />];
-  const rows = users.map((elem) => [
-    <AvatarComponent name={elem.student.fullname} img={elem.student.avatar} />,
-    <InputComponent />,
-  ]);
+  const rows = users.map((elem) => ({
+    row: [
+      {
+        col: (
+          <AvatarComponent
+            name={elem.student.fullname}
+            img={elem.student.avatar}
+          />
+        ),
+        colData: "",
+      },
+      { col: <InputComponent />, colData: "" },
+    ],
+    rowData: elem,
+  }));
   const selectHandler = (col: any, index: number) => {};
   return (
     <StudentList className="list">
       <TableComponent
         columns={columns}
-        rows={{ rows: rows }}
+        rows={ rows }
         callbackFn={selectHandler}
-        sort ={true}
+        sort={true}
       />
     </StudentList>
   );

@@ -4,12 +4,12 @@ import { ReactSVG } from "react-svg";
 
 const TableComponent = ({
   columns,
-  rows: { rows },
+  rows,
   callbackFn,
   sort,
 }: {
   columns: any[];
-  rows: { rows: any[] };
+  rows:any[];
   callbackFn: (sub: any, index: number) => void;
   sort: boolean;
 }) => {
@@ -81,8 +81,8 @@ const TableComponent = ({
                     />
                   </td>
                 )}
-                {row.map((column: any, index: number) => (
-                  <td onClick={() => callbackFn(column, index)}>{column}</td>
+                {row.row.map((column: any, index: number) => (
+                  <td onClick={() => callbackFn(column, index)}>{column.col}</td>
                 ))}
               </>
             </tr>
