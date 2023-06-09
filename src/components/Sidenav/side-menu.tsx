@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction} from "react";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
@@ -16,18 +16,22 @@ export const SideMenu = ({
   menuOpen,
   handleClick,
   navMenuClickHandler,
+  index,
+  setOpen
 }: {
   mainMenu: string;
   childItems: { icon: string; title: string; path: string }[];
   menuOpen: boolean;
-  handleClick: (title:string) => void;
+  handleClick: (title:number) => void;
   navMenuClickHandler: (title: string) => void;
+  index : number;
+  setOpen:  Dispatch<SetStateAction<{ [x: string]: boolean }>> 
 }) => {
   const theme = useTheme();
 
   return (
     <>
-      <ListItemButton onClick={()=>handleClick(mainMenu)} className="sideNav__parent">
+      <ListItemButton onClick={()=>handleClick(index)} className="sideNav__parent">
         <ListItemText primary={mainMenu} />
         {
           <object
