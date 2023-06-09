@@ -9,7 +9,6 @@ const Wrapper = ({
   wrapperHead: JSX.Element;
   wrapperBody: JSX.Element[];
 }) => {
-  console.log(wrapperHead);
   return (
     <WrapperComponent>
       <div className="wrapper">

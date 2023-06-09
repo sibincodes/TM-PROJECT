@@ -8,26 +8,38 @@ const ScheduleTableComponent = ({
   timeTable,
 }: {
   selectedCell: number;
-  cellHighlightHandler: (sub: any, index: number) => void;
-  timeTable: {
-    period: string;
-    class: string;
-    subject: string;
-  }[];
+  cellHighlightHandler: (sub: any) => void;
+  timeTable: any[];
 }) => {
-  const columns = timeTable.map((elem) => elem.period);
+  const columns = timeTable.map((elem) => ({
+    col: elem.period,
+    colData: elem,
+  }));
   const rows = timeTable.map((elem, index) =>
-    elem.class.length > 0 ? (
-      <>
-        <div className={selectedCell === index ? "cell cell--border" : "cell"}>
-          <span>{elem.class}</span>
-          <span>{elem.subject.slice(0, 3)}</span>
-        </div>
-        <div className={selectedCell === index ? "cell-dot cell--highlight" : "cell-dot"}></div>
-      </>
-    ) : (
-      <>-</>
-    )
+    elem.class.length > 0
+      ? {
+          col: (
+            <>
+              <div
+                className={
+                  selectedCell === elem.id ? "cell cell--border" : "cell"
+                }
+              >
+                <span>{elem.class}</span>
+                <span>{elem.subject.slice(0, 3)}</span>
+              </div>
+              <div
+                className={
+                  Object.values(elem.task).reduce((state,elem)=>{return state && elem},true)
+                    ? "cell-dot"
+                    : "cell-dot cell--highlight"
+                }
+              ></div>
+            </>
+          ),
+          colData: elem,
+        }
+      : { col: <>-</>, colData: elem }
   );
 
   return (
@@ -35,7 +47,12 @@ const ScheduleTableComponent = ({
       <div className="table">
         <TableComponent
           columns={columns}
-          rows={{ rows: [rows] }}
+          rows={[
+            {
+              row: rows,
+              rowData: "",
+            },
+          ]}
           callbackFn={cellHighlightHandler}
           sort={false}
         />

@@ -32,6 +32,7 @@ export const ScheduleTable = styled('div')(({ theme }) => ({
         lineHeight: '22.5px',
         fontWeight: '600',
         display: "block",
+        margin:'auto',
         padding: "4px 10px",
         width: 'max-content',
         maxWidth: '70px'
