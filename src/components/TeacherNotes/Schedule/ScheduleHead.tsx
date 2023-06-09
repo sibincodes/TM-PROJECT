@@ -11,7 +11,7 @@ import dateFormat from 'dateformat';
 const ScheduleHeadComponent = () => {
   const icons = <ReactSVG src="/HeaderIcons/next.svg" />;
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
+  const [value, setValue] = useState<Dayjs | null>(dayjs(dateFormat(new Date(),'shortDate')));
 
   return (
     <ScheduleHead>
@@ -24,7 +24,7 @@ const ScheduleHeadComponent = () => {
         startIcon={icons}
         endIcon={icons}
       >
-        <span onClick={() => setOpen((prev) => !prev)}>{dateFormat(value?.toDate(), "mmmm dS, yyyy")}</span>
+        <span onClick={() => setOpen((prev) => !prev)}>{dateFormat(value?.toDate(), "mmmm dd, yyyy")}</span>
       </Button>
       {open && (
         <DateCalendarValue

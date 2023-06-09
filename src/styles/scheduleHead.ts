@@ -30,6 +30,7 @@ export const ScheduleHead = styled('div')(({ theme }) => ({
         fontSize: '14px',
         lineHeight: '21px',
         fontWeight: '500',
+        textTransform:'capitalize'
     },
     ".schedule__calendar": {
         position: 'absolute',
