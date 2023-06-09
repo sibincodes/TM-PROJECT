@@ -12,9 +12,7 @@ const ScheduleHeadComponent = () => {
   const icons = <ReactSVG src="/HeaderIcons/next.svg" />;
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
-useEffect(()=>{
-console.log("value",dateFormat(value?.toDate(), "mmmm dS, yyyy"));
-},[value]);
+
   return (
     <ScheduleHead>
       <h4>Schedule</h4>
@@ -26,7 +24,7 @@ console.log("value",dateFormat(value?.toDate(), "mmmm dS, yyyy"));
         startIcon={icons}
         endIcon={icons}
       >
-        <span onClick={() => setOpen((prev) => !prev)}>Date</span>
+        <span onClick={() => setOpen((prev) => !prev)}>{dateFormat(value?.toDate(), "mmmm dS, yyyy")}</span>
       </Button>
       {open && (
         <DateCalendarValue
