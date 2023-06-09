@@ -7,31 +7,7 @@ import { ButtonComponent } from "../../CommonComponents/Button/button";
 import { DropDown } from "../../CommonComponents/DropDownMenu/drop-down-menu";
 import TableComponent from "../../CommonComponents/Table/TableComponents";
 
-const StudentTableComponent = () => {
-  const users = [
-    { name: "gowri", marks: 50 },
-    { name: "gowri", marks: 50 },
-    { name: "gowri", marks: 50 },
-  ];
-  const columns = [<AvatarComponent name="All Students" />, <Button />];
-  const rows = users.map((elem) => [
-    <AvatarComponent name={elem.name} />,
-    <InputComponent />,
-  ]);
-  const selectHandler = (col: any, index: number) => {};
-  return (
-    <StudentList className="list">
-      <TableComponent
-        columns={columns}
-        rows={{ rows: rows }}
-        callbackFn={selectHandler}
-        sort ={true}
-      />
-    </StudentList>
-  );
-};
-export default StudentTableComponent;
-
+//Avatar and Name
 const AvatarComponent = ({ name }: { name: string }) => {
   return (
     <Box className="list__left">
@@ -53,6 +29,7 @@ const InputComponent = () => {
   );
 };
 
+// Filter dropdown
 const Button = () => {
   const dropdownStyles = {
     ".MuiMenuItem-root": {
@@ -109,3 +86,28 @@ const Button = () => {
     </>
   );
 };
+
+const StudentTableComponent = () => {
+  const users = [
+    { name: "gowri", marks: 50 },
+    { name: "gowri", marks: 50 },
+    { name: "gowri", marks: 50 },
+  ];
+  const columns = [<AvatarComponent name="All Students" />, <Button />];
+  const rows = users.map((elem) => [
+    <AvatarComponent name={elem.name} />,
+    <InputComponent />,
+  ]);
+  const selectHandler = (col: any, index: number) => {};
+  return (
+    <StudentList className="list">
+      <TableComponent
+        columns={columns}
+        rows={{ rows: rows }}
+        callbackFn={selectHandler}
+        sort ={true}
+      />
+    </StudentList>
+  );
+};
+export default StudentTableComponent;
