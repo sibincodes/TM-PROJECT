@@ -2,10 +2,11 @@ import { Button } from "@mui/material";
 import { ReactSVG } from "react-svg";
 import { ScheduleHead } from "../../../styles/scheduleHead";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DateCalendarValue from "./ScheduleCalendar";
 import dayjs, { Dayjs } from "dayjs";
 import { Link } from "react-router-dom";
+import dateFormat from 'dateformat';
 
 const ScheduleHeadComponent = () => {
   const icons = <ReactSVG src="/HeaderIcons/next.svg" />;
@@ -23,7 +24,7 @@ const ScheduleHeadComponent = () => {
         startIcon={icons}
         endIcon={icons}
       >
-        <span onClick={() => setOpen((prev) => !prev)}>Date</span>
+        <span onClick={() => setOpen((prev) => !prev)}>{dateFormat(value?.toDate(), "mmmm dS, yyyy")}</span>
       </Button>
       {open && (
         <DateCalendarValue
