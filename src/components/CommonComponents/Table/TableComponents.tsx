@@ -10,7 +10,7 @@ const TableComponent = ({
 }: {
   columns: any[];
   rows:any[];
-  callbackFn: (sub: any, index: number) => void;
+  callbackFn?: (sub: any) => void;
   sort: boolean;
 }) => {
   interface RowData {
@@ -57,7 +57,7 @@ const TableComponent = ({
               </th>
             )}
             {columns.map((col: any, index: number) => (
-              <th onClick={() => callbackFn(col, index)}>{col}</th>
+              <th onClick={() =>callbackFn && callbackFn(col.colData)}>{col.col}</th>
             ))}
           </tr>
         </thead>
@@ -80,8 +80,8 @@ const TableComponent = ({
                     />
                   </td>
                 )}
-                {row.row.map((column: any, index: number) => (
-                  <td onClick={() => callbackFn(column, index)}>{column.col}</td>
+                {row.row.map((column: any) => (
+                  <td onClick={() => callbackFn && callbackFn(column.colData)}>{column.col}</td>
                 ))}
               </>
             </tr>

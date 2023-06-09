@@ -8,14 +8,10 @@ const ScheduleTableComponent = ({
   timeTable,
 }: {
   selectedCell: number;
-  cellHighlightHandler: (sub: any, index: number) => void;
-  timeTable: {
-    period: string;
-    class: string;
-    subject: string;
-  }[];
+  cellHighlightHandler: (sub: any) => void;
+  timeTable: any[];
 }) => {
-  const columns = timeTable.map((elem) => elem.period);
+  const columns = timeTable.map((elem) => ({col:elem.period,colData:elem}));
   const rows = timeTable.map((elem, index) =>
     elem.class.length > 0
       ? {
@@ -23,7 +19,7 @@ const ScheduleTableComponent = ({
             <>
               <div
                 className={
-                  selectedCell === index ? "cell cell--border" : "cell"
+                  selectedCell === elem.id ? "cell cell--border" : "cell"
                 }
               >
                 <span>{elem.class}</span>
@@ -31,7 +27,7 @@ const ScheduleTableComponent = ({
               </div>
               <div
                 className={
-                  selectedCell === index
+                  selectedCell === elem.id
                     ? "cell-dot cell--highlight"
                     : "cell-dot"
                 }

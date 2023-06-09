@@ -120,7 +120,7 @@ const StudentTableComponent = () => {
       },
     },
   ];
-  const columns = [<AvatarComponent name="All Students" />, <Button />];
+  const columns = [{col:<AvatarComponent name="All Students" />,colData:''}, {col:<Button />,colData:''}];
   const rows = users.map((elem) => ({
     row: [
       {
@@ -136,13 +136,11 @@ const StudentTableComponent = () => {
     ],
     rowData: elem,
   }));
-  const selectHandler = (col: any, index: number) => {};
   return (
     <StudentList className="list">
       <TableComponent
         columns={columns}
         rows={ rows }
-        callbackFn={selectHandler}
         sort={true}
       />
     </StudentList>
