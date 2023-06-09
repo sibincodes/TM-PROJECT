@@ -4,8 +4,19 @@ import TableComponent from '../CommonComponents/Table/TableComponents';
 import {Layout} from "../Layout/layout";
 import ScheduleMain from './Schedule/ScheduleMain';
 import StudentTableComponent from './StudentList/StudentTable';
+import { useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { RoutesContext } from '../../context/routes-context-provider';
+import { RoutesContextType } from '../../@types/routes-context-type';
 
 export const TeacherNotes = () => {
+  const { saveRoutes } = React.useContext(RoutesContext) as RoutesContextType;
+  const {pathname} =  useLocation();
+  const title = 'Teacher Notes';
+  useEffect(()=>{
+    saveRoutes({ title, path: `Dashboard/2020-2021/${pathname}` });
+  },[]);
+
   return (
     <Layout>
 

@@ -41,9 +41,6 @@ export const SideNavigation = () => {
     }
   },[])
 
-  const navMenuClickHandler = (title: string) => {
-    saveRoutes({ title, path: `Dashboard/2020-2021/${title}` });
-  };
 
   return (
     <>
@@ -55,7 +52,6 @@ export const SideNavigation = () => {
             childItems={childItems}
             menuOpen={menuOpen[index]}
             handleClick={handleClick}
-            navMenuClickHandler={navMenuClickHandler}
             setOpen = {setOpen} 
           />{" "}
         </List>

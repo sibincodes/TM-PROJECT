@@ -15,7 +15,6 @@ export const SideMenu = ({
   childItems,
   menuOpen,
   handleClick,
-  navMenuClickHandler,
   index,
   setOpen
 }: {
@@ -23,7 +22,6 @@ export const SideMenu = ({
   childItems: { icon: string; title: string; path: string }[];
   menuOpen: boolean;
   handleClick: (title:number) => void;
-  navMenuClickHandler: (title: string) => void;
   index : number;
   setOpen:  Dispatch<SetStateAction<{ [x: string]: boolean }>> 
 }) => {
@@ -58,7 +56,7 @@ export const SideMenu = ({
                     ? "sideNav__link sideNav__link--active"
                     : "sideNav__link"
                 }
-                onClick={() => navMenuClickHandler(title)}
+                // onClick={() => navMenuClickHandler(title)}
               >
                 <ListItemButton className="sideNav__child">
                   <ListItemIcon>

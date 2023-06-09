@@ -1,10 +1,21 @@
-import {  useState } from 'react';
+import {  useEffect, useState } from 'react';
 import { Layout } from '../Layout/layout';
 import { ButtonComponent } from '../CommonComponents/Button/button';
 import { DropDown } from "../CommonComponents/DropDownMenu/drop-down-menu";
 import addButton from "../../assets/add-button.svg";
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+import { RoutesContext } from '../../context/routes-context-provider';
+import { RoutesContextType } from '../../@types/routes-context-type';
 
 export const Profile = () => {
+
+  const { saveRoutes } = React.useContext(RoutesContext) as RoutesContextType;
+  const {pathname} =  useLocation();
+  const title = 'Circular';
+  useEffect(()=>{
+    saveRoutes({ title, path: `Dashboard/2020-2021/${pathname}` });
+  },[]);
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
