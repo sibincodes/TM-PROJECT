@@ -65,7 +65,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export function TopNav() {
   const { routes } = React.useContext(RoutesContext) as RoutesContextType;
-  console.log("Routes context", routes);
   const pageData = React.useContext(RoutesContext);
   console.log("Data", pageData);
   const path = useLocation();
