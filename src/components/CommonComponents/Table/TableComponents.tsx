@@ -74,7 +74,7 @@ const TableComponent = ({
                 {sort && (
                   <td>
                     <Checkbox
-                      onChange={() => handleRowClick(index, row)}
+                      onChange={() => handleRowClick(index, row.rowData)}
                       checked={selectedRows[index] || false}
                       icon={<ReactSVG src="/icons/checkbox.svg" />}
                       checkedIcon={<ReactSVG src="/icons/checkbox-tick.svg" />}
