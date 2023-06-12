@@ -73,7 +73,9 @@ export const ScheduleDetail = styled('div')(({ theme }) => ({
         borderRadius: '50%',
         border: '1px solid',
         fontSize:'16px',
-        fontWeight:'700'
+        lineHeight:'16px',
+        fontWeight:'700',
+        fontFamily:'Inter'
 
     },
     "span.details__task-ontime":{

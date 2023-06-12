@@ -47,7 +47,7 @@ export const ScheduleTable = styled('div')(({ theme }) => ({
 
     "th": {
         color: theme.palette.custom.backgroundBlack,
-        padding: '0 14px 10px'
+        padding: '0 14px 8px'
     }
     , ".cell--border": {
         borderColor: `${theme.palette.custom.blue} !important`,
