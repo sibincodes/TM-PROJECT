@@ -9,10 +9,23 @@ import { Link } from "react-router-dom";
 import dateFormat from 'dateformat';
 
 const ScheduleHeadComponent = () => {
-  const icons = <ReactSVG src="/HeaderIcons/next.svg" />;
+  const forwardIcon = <ReactSVG src="/HeaderIcons/next.svg" onClick={()=>dateSwitchHandler("next")} />;
+  const backwardIcon=<ReactSVG src="/HeaderIcons/next.svg" onClick={()=>dateSwitchHandler("prev")}/>;
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState<Dayjs | null>(dayjs(dateFormat(new Date(),'shortDate')));
 
+  const dateSwitchHandler=(dir:string)=>{
+const currentDate=new Date(dateFormat(value?.toDate(), "mmmm dd, yyyy"));
+if(dir==="next"){
+  setValue(dayjs(dateFormat(currentDate.setDate(currentDate.getDate() + 1), "mmmm dd, yyyy")));
+
+}
+else{
+  setValue(dayjs(dateFormat(currentDate.setDate(currentDate.getDate() - 1), "mmmm dd, yyyy")));
+
+}
+
+  }
   return (
     <ScheduleHead>
       <h4>Schedule</h4>
@@ -21,8 +34,8 @@ const ScheduleHeadComponent = () => {
         className="schedule__button"
         disableRipple
         variant="outlined"
-        startIcon={icons}
-        endIcon={icons}
+        startIcon={backwardIcon}
+        endIcon={forwardIcon}
       >
         <span onClick={() => setOpen((prev) => !prev)}>{dateFormat(value?.toDate(), "mmmm dd, yyyy")}</span>
       </Button>
