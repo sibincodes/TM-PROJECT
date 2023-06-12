@@ -25,7 +25,7 @@ export const Profile = () => {
     setAnchorEl(event.currentTarget);
   }
 
-  const handleMenuClose = () => {
+  const handleMenuClose = (val:string) => {
     setAnchorEl(null);
   }
   const menuOptions = [
