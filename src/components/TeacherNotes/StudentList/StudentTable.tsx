@@ -1,5 +1,6 @@
 import { Avatar, Box, TextField } from "@mui/material";
-import { useState } from "react";
+import { previousDay } from "date-fns";
+import { useEffect, useState } from "react";
 import { ReactSVG } from "react-svg";
 import { StudentList } from "../../../styles/studentList";
 import { theme } from "../../../ThemeProvider";
@@ -16,11 +17,32 @@ const AvatarComponent = ({ name, img }: { name: string; img?: string }) => {
     </Box>
   );
 };
-const InputComponent = () => {
+const InputComponent = ({
+  student,
+  marksChangeHandler,
+  value
+}: {
+  student: any;
+  value:string;
+  marksChangeHandler: (
+    student: {
+      id: number;
+      fullname: string;
+      class: string;
+      section: string;
+      avatar: string;
+    },
+    marks: string,
+  ) => void;
+}) => {
   return (
     <Box className="list__marks">
       <div className="list__inputBox">
-        <input className="list__input" />
+        <input
+          className="list__input"
+          onChange={(e) => marksChangeHandler(student, e.target.value)}
+          value={value}
+        />
         <span className="list__text  list__bar">/</span>
       </div>
 
@@ -88,6 +110,11 @@ const Button = () => {
 };
 
 const StudentTableComponent = () => {
+  const [marks, setMarks] = useState<{
+    [id: number]: string;
+  }>({
+
+  });
   const users = [
     {
       id: 1,
@@ -120,7 +147,30 @@ const StudentTableComponent = () => {
       },
     },
   ];
-  const columns = [{col:<AvatarComponent name="All Students" />,colData:''}, {col:<Button />,colData:''}];
+  useEffect(() => {
+    users.map((elem) => 
+
+    setMarks((prev)=>({...prev,[elem.student.id]:'0'}))
+
+    );
+  },[]);
+  const marksChangeHandler = (
+    student: {
+      id: number;
+      fullname: string;
+      class: string;
+      section: string;
+      avatar: string;
+    },
+    marks: string
+  ) => {
+    setMarks(prev=>({...prev, [student.id]: marks }));
+  };
+
+  const columns = [
+    { col: <AvatarComponent name="All Students" />, colData: "" },
+    { col: <Button />, colData: "" },
+  ];
   const rows = users.map((elem) => ({
     row: [
       {
@@ -132,17 +182,23 @@ const StudentTableComponent = () => {
         ),
         colData: "",
       },
-      { col: <InputComponent />, colData: "" },
+      {
+        col: (
+          <InputComponent
+            student={elem.student}
+            value={marks[elem.student.id]}
+            marksChangeHandler={marksChangeHandler}
+          />
+        ),
+        colData: "",
+      },
     ],
     rowData: elem,
   }));
+
   return (
     <StudentList className="list">
-      <TableComponent
-        columns={columns}
-        rows={ rows }
-        sort={true}
-      />
+      <TableComponent columns={columns} rows={rows} sort={true} />
     </StudentList>
   );
 };
