@@ -15,7 +15,7 @@ export const ButtonComponent = ({
   name: string;
   icon?: JSX.Element;
   typeVariant?: "text" | "outlined" | "contained" | undefined;
-  actionHandler?: (event: React.MouseEvent<HTMLButtonElement | null>) => void;
+  actionHandler?: (event: React.MouseEvent<HTMLButtonElement | null>,data?:any) => void;
   type?: "submit";
   buttonType?: string;
 }) => {
@@ -45,7 +45,8 @@ export const ButtonComponent = ({
         sx={buttonStyles}
         disableRipple
         startIcon={icon}
-        onClick={actionHandler}
+        //@ts-ignore
+        onClick={(e)=>actionHandler(e,data)}
         type={type || "button"}
       >
         {name}

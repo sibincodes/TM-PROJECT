@@ -1,6 +1,7 @@
 import { Typography } from '@mui/material';
 import { WrapperComponent } from '../../styles/wrapperStyles';
 import TableComponent from '../CommonComponents/Table/TableComponents';
+import FormComponent from '../Forms/formComponent';
 import {Layout} from "../Layout/layout";
 import ScheduleMain from './ScheduleMain';
 
@@ -36,6 +37,7 @@ export const TeacherNotes = () => {
           posuere sollicitudin aliquam ultrices sagittis orci a.
         </Typography>
 <ScheduleMain/>
+<FormComponent/>
     </Layout>
   )
 }
