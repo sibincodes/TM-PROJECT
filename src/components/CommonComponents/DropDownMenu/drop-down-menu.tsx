@@ -4,9 +4,9 @@ import { ListItemIcon, Menu, MenuItem, SxProps } from "@mui/material";
 export interface DropDownStatus {
   isOpen: boolean;
   anchorEl: HTMLElement | null;
-  handleMenuClose: () => void;
+  handleMenuClose: (val:string) => void;
   style?: SxProps;
-  menuOptions:{src?:string,listItem:string}[]
+  menuOptions:{src?:string,listItem:string,value?:any}[]
 }
 export const DropDown = ({
   isOpen,
@@ -15,8 +15,8 @@ export const DropDown = ({
   style,
   menuOptions
 }: DropDownStatus) => {
-  const handleClose = () => {
-    handleMenuClose();
+  const handleClose = (val:string) => {
+    val && handleMenuClose(val);
   };
 
 
@@ -31,8 +31,8 @@ export const DropDown = ({
         sx: style,
       }}
     >
-      {menuOptions.map(({ src, listItem }) => (
-        <MenuItem onClick={handleClose}>
+      {menuOptions.map(({ src, listItem ,value}) => (
+        <MenuItem onClick={()=>handleClose(value)}>
           {src && <ListItemIcon>
             <img src={src} />
           </ListItemIcon>}
