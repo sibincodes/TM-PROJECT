@@ -52,7 +52,7 @@ const InputComponent = ({
 };
 
 // Filter dropdown
-const Button = () => {
+const Button = ({setSort,sort}:{setSort:React.Dispatch<React.SetStateAction<string>>,sort:string}) => {
   const dropdownStyles = {
     ".MuiMenuItem-root": {
       padding: "10px 16px",
@@ -72,11 +72,13 @@ const Button = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const menuOptions = [
-    { listItem: "View All(55)" },
-    { listItem: "View All(55)" },
-    { listItem: "View All(55)" },
-    { listItem: "View All(55)" },
-    { listItem: "View All(55)" },
+    { listItem: "View All(55)",value:"View All" },
+    { listItem: "Not Submitted (10)", value:"Not Submitted"},
+    { listItem: "Pending Evaluation (15)",value:"Pending Evaluation" },
+    { listItem: "Resubmitted (10)",value:"Resubmitted" },
+    { listItem: "Approved (10)",value:"Approved" },
+    { listItem:"Rejected (5)",value:"Rejected" },
+
   ];
   const ButtonActionHandler = (
     event: React.MouseEvent<HTMLButtonElement | null>
@@ -84,13 +86,15 @@ const Button = () => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleMenuClose = () => {
+  const handleMenuClose = (val:string) => {
     setAnchorEl(null);
+    setSort(val)
+ 
   };
   return (
     <>
       <ButtonComponent
-        name="Filter by"
+        name={sort || "Filter by"}
         buttonType="header"
         endIcon={<ReactSVG src="/icons/dropdown.svg" />}
         aria-controls={open ? "basic-menu" : undefined}
@@ -166,10 +170,11 @@ const StudentTableComponent = () => {
   ) => {
     setMarks(prev=>({...prev, [student.id]: marks }));
   };
+  const [sort,setSort]=useState('')
 
   const columns = [
     { col: <AvatarComponent name="All Students" />, colData: "" },
-    { col: <Button />, colData: "" },
+    { col: <Button setSort={setSort} sort={sort}/>, colData: "" },
   ];
   const rows = users.map((elem) => ({
     row: [
