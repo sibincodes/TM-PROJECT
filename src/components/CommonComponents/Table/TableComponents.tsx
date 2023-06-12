@@ -19,21 +19,21 @@ const TableComponent = ({
     age: number;
   }
   const [selectedRows, setSelectedRows] = useState<{
-    [index: number]: boolean;
+    [index: number]: {selected:boolean,data:{}};
   }>({});
   const [allSelected, setAllSelected] = useState(false);
   useEffect(() => {
     rows.map((elem, index) => {
-      setSelectedRows((prev) => ({ ...prev, [elem.rowData.id]: false }));
+      setSelectedRows((prev) => ({ ...prev, [elem.rowData.id]: {selected:false,data:elem.rowData} }));
     });
   }, []);
 
   const handleRowClick = (index?: number, rowData?: any) => {
     if (index?.toString())
-      setSelectedRows((prev) => ({ ...prev, [rowData.id]: !prev[rowData.id] }));
+      setSelectedRows((prev) => ({ ...prev, [rowData.id]: {selected:!prev[rowData.id].selected,data:rowData} }));
     else {
       rows.map((elem, index) => {
-        setSelectedRows((prev) => ({ ...prev, [elem.rowData.id]: !allSelected }));
+        setSelectedRows((prev) => ({ ...prev, [elem.rowData.id]: {selected:!allSelected,data:elem.rowData} }));
       });
       setAllSelected((prev) => !prev);
     }
@@ -65,7 +65,7 @@ const TableComponent = ({
           {rows.map((row, index) => (
             <tr
               className={
-                selectedRows[row.rowData.id] ? "row--selected" : "row--unselected"
+                selectedRows[row.rowData.id]?.selected ? "row--selected" : "row--unselected"
               }
             >
               <>
@@ -74,7 +74,7 @@ const TableComponent = ({
                   <td>
                     <Checkbox
                       onChange={() => handleRowClick(index, row.rowData)}
-                      checked={selectedRows[row.rowData.id] || false}
+                      checked={selectedRows[row.rowData.id]?.selected|| false}
                       icon={<ReactSVG src="/icons/checkbox.svg" />}
                       checkedIcon={<ReactSVG src="/icons/checkbox-tick.svg" />}
                     />
