@@ -1,6 +1,7 @@
 import {  useEffect, useState } from 'react';
 import { Layout } from '../Layout/layout';
 import { ButtonComponent } from '../CommonComponents/Button/button';
+import {SelectBox} from '../CommonComponents/SelectBox/select-box';
 import { DropDown } from "../CommonComponents/DropDownMenu/drop-down-menu";
 import addButton from "../../assets/add-button.svg";
 import React from 'react';
@@ -39,15 +40,15 @@ export const Profile = () => {
   return (
     <Layout>
       <>
-      Profile
-      <ButtonComponent name ='Add New' buttonType='add' 
+      <SelectBox/>
+      {/* <ButtonComponent name ='Add New' buttonType='add' 
               startIcon={addIconButton}
               aria-controls={open ? "basic-menu" : undefined}
               aria-haspopup="true"
               aria-expanded={open ? "true" : undefined}
               actionHandler={(e)=>ButtonActionHandler(e)}
       />
-      <DropDown isOpen={open} anchorEl={anchorEl} handleMenuClose={handleMenuClose} menuOptions={menuOptions}/>
+      <DropDown isOpen={open} anchorEl={anchorEl} handleMenuClose={handleMenuClose} menuOptions={menuOptions}/> */}
       </>
     </Layout>
   )
