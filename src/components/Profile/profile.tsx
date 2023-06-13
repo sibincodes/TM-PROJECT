@@ -40,7 +40,7 @@ export const Profile = () => {
   return (
     <Layout>
       <>
-      <SelectBox/>
+      <SelectBox apiEndPoint='https://api.agify.io?name=meelad'/>
       {/* <ButtonComponent name ='Add New' buttonType='add' 
               startIcon={addIconButton}
               aria-controls={open ? "basic-menu" : undefined}
