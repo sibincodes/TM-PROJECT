@@ -59,7 +59,18 @@ export const sideMenuOptions = [{
     childItems: [{
         icon: '/icons/LeaveApproval.svg',
         title: 'Leave Approval',
-        path: '/leave-approval'
+        path: '/leave-approval',
+        subChildItem : [{
+            icon: '/icons/LeaveApproval.svg',
+            title: 'Student',
+            path: '/student'
+        },
+        {
+            icon: '/icons/LeaveApproval.svg',
+            title: 'Staff',
+            path: '/staff'
+        }
+    ]
     },
     {
         icon: '/icons/TeacherSubstitution.svg',
