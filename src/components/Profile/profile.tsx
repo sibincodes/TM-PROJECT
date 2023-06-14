@@ -1,14 +1,12 @@
 import {  useEffect, useState } from 'react';
 import { Layout } from '../Layout/layout';
 import { ButtonComponent } from '../CommonComponents/Button/button';
-import {SelectBox} from '../CommonComponents/SelectBox/select-box';
 import { DropDown } from "../CommonComponents/DropDownMenu/drop-down-menu";
 import addButton from "../../assets/add-button.svg";
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { RoutesContext } from '../../context/routes-context-provider';
 import { RoutesContextType } from '../../@types/routes-context-type';
-
 export const Profile = () => {
 
   const { saveRoutes } = React.useContext(RoutesContext) as RoutesContextType;
@@ -40,15 +38,14 @@ export const Profile = () => {
   return (
     <Layout>
       <>
-      <SelectBox apiEndPoint='https://api.agify.io?name=meelad'/>
-      {/* <ButtonComponent name ='Add New' buttonType='add' 
+      <ButtonComponent name ='Add New' buttonType='add' 
               startIcon={addIconButton}
               aria-controls={open ? "basic-menu" : undefined}
               aria-haspopup="true"
               aria-expanded={open ? "true" : undefined}
               actionHandler={(e)=>ButtonActionHandler(e)}
       />
-      <DropDown isOpen={open} anchorEl={anchorEl} handleMenuClose={handleMenuClose} menuOptions={menuOptions}/> */}
+      <DropDown isOpen={open} anchorEl={anchorEl} handleMenuClose={handleMenuClose} menuOptions={menuOptions}/>
       </>
     </Layout>
   )
