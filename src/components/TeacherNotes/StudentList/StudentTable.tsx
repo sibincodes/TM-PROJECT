@@ -3,38 +3,12 @@ import { useEffect, useState } from "react";
 import { ReactSVG } from "react-svg";
 import { StudentList } from "../../../styles/studentList";
 import { theme } from "../../../ThemeProvider";
-import { AvatarIcon } from "../../CommonComponents/AvatarIcon";
 import { ButtonComponent } from "../../CommonComponents/Button/button";
 import { DropDown } from "../../CommonComponents/DropDownMenu/drop-down-menu";
 import TableComponent from "../../CommonComponents/Table/TableComponents";
+import { AvatarComponent } from "./AvatarComponent";
 
-//Avatar and Name
-const AvatarComponent = ({
-  name,
-  img,
-  color,
-}: {
-  name: string;
-  img?: string;
-  color?: string;
-}) => {
-  return (
-    <Box className="list__left">
-      <AvatarIcon
-        img={img || "/icons/user.svg"}
-        styles={
-          img
-            ? {
-                border: "2px solid",
-                borderColor: color,
-              }
-            : null
-        }
-      />
-      <h4 className="list__text">{name}</h4>
-    </Box>
-  );
-};
+
 const InputComponent = ({
   student,
   marksChangeHandler,
