@@ -86,6 +86,7 @@ const Button = ({
   const handleMenuClose = (val?:string) => {
     setAnchorEl(null);
     val && setSort(val);
+
   };
   
   return (
@@ -128,7 +129,9 @@ const StudentTableComponent = () => {
       task: {
         id: 400,
         type: "assignment",
-        details: {},
+        details: {
+          status : 'Not Submitted'
+        },
       },
     },
     {
@@ -144,7 +147,9 @@ const StudentTableComponent = () => {
       task: {
         id: 400,
         type: "assignment",
-        details: {},
+        details: {
+          status : 'Pending Evaluation'
+        },
       },
     },
   ];
@@ -171,7 +176,11 @@ const StudentTableComponent = () => {
     { col: <AvatarComponent name="All Students" />, colData: "" },
     { col: <Button setSort={setSort} sort={sort} />, colData: "" },
   ];
-  const rows = users.map((elem) => ({
+  const data = sort ?
+  users.filter((elem) => elem?.task?.details?.status===sort) : users;
+
+  const rows = data.length > 0 ? data.map((elem) => (
+    {
     row: [
       {
         col: (
@@ -195,7 +204,20 @@ const StudentTableComponent = () => {
       },
     ],
     rowData: elem,
-  }));
+  } 
+  )) :     {
+    row: [
+      {
+        col: (
+              <div>No Data Found !!</div>
+        ),
+        colData: "",
+      },
+
+    ],
+    rowData: {},
+  }
+      ;
 
   return (
     <StudentList className="list">
