@@ -100,6 +100,18 @@ export const SideNavComponent = styled('div')(({ theme }) => ({
         lineHeight: '20px',
         fontWeight: '400'
 
+    },
+    ".sideNav__innerChild.MuiList-root":{
+        marginBottom:'12px',
+        marginLeft:'26px'
+
+    },
+    ".sideNav__innerChild .sideNav__link":{
+        marginBottom:'4px'
+    },
+    ".sideNav__collapse":{
+        display:'none'
     }
+
 
 }));

@@ -1,11 +1,8 @@
-import React, { Dispatch, SetStateAction, useState} from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
-import ExpandLess from "@mui/icons-material/ExpandLess";
-import ExpandMore from "@mui/icons-material/ExpandMore";
-import StarBorder from "@mui/icons-material/StarBorder";
 import { List, useTheme } from "@mui/material";
 
 import { ReactSVG } from "react-svg";
@@ -16,26 +13,34 @@ export const SideMenu = ({
   menuOpen,
   handleClick,
   index,
-  setOpen
+  setOpen,
 }: {
   mainMenu: string;
-  childItems: {subChildItem? : {icon: string; title: string; path: string }[], icon: string; title: string; path: string }[];
+  childItems: {
+    subChildItem?: { icon: string; title: string; path: string }[];
+    icon: string;
+    title: string;
+    path: string;
+  }[];
   menuOpen: boolean;
-  handleClick: (title:number) => void;
-  index : number;
-  setOpen:  Dispatch<SetStateAction<{ [x: string]: boolean }>> 
+  handleClick: (title: number) => void;
+  index: number;
+  setOpen: Dispatch<SetStateAction<{ [x: string]: boolean }>>;
 }) => {
   const theme = useTheme();
-const [isOpen, setIsOpen] = useState(false);
-  const childClickHandler = (hasSubChildren : boolean) => {
-    if(hasSubChildren){
-      setIsOpen(prevState => !prevState);
+  const [isOpen, setIsOpen] = useState(false);
+  const childClickHandler = (hasSubChildren: boolean) => {
+    if (hasSubChildren) {
+      setIsOpen((prevState) => !prevState);
     }
-  }
+  };
 
   return (
     <>
-      <ListItemButton onClick={()=>handleClick(index)} className="sideNav__parent">
+      <ListItemButton
+        onClick={() => handleClick(index)}
+        className="sideNav__parent"
+      >
         <ListItemText primary={mainMenu} />
         {
           <object
@@ -51,45 +56,62 @@ const [isOpen, setIsOpen] = useState(false);
       <Collapse in={menuOpen} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <>
-            {childItems.map(({subChildItem, icon, title, path }, index) => (
+            {childItems.map(({ subChildItem, icon, title, path }, index) => (
               <>
-               <NavLink
-               key={index}
-               to={subChildItem ? '' : path}
-               className={({ isActive, isPending }) =>
-                 isPending
-                   ? ""
-                   : isActive && !subChildItem 
-                   ? "sideNav__link sideNav__link--active"
-                   : "sideNav__link"
-               }
-               onClick={() => childClickHandler(subChildItem ? true : false)}
-             >
-               <ListItemButton className="sideNav__child">
-                 <ListItemIcon>
-                   <ReactSVG src={icon} />
-                 </ListItemIcon>
-                 <ListItemText primary={title} />
-                 {subChildItem &&  <ExpandMore />}
-               </ListItemButton>
-             </NavLink>
+                <NavLink
+                  key={index}
+                  to={subChildItem ? "" : path}
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? ""
+                      : isActive && !subChildItem
+                      ? "sideNav__link sideNav__link--active"
+                      : "sideNav__link"
+                  }
+                  onClick={() => childClickHandler(subChildItem ? true : false)}
+                >
+                  <ListItemButton className="sideNav__child">
+                    <ListItemIcon>
+                      <ReactSVG src={icon} />
+                    </ListItemIcon>
+                    <ListItemText primary={title} />
+                    {subChildItem && (
+                      <object
+                        data="/HeaderIcons/next.svg"
+                        width="8"
+                        height="16"
+                        className={
+                          isOpen
+                            ? "sideNav__parent--open"
+                            : "sideNav__parent--close"
+                        }
+                      />
+                    )}
+                  </ListItemButton>
+                </NavLink>
 
-          <Collapse in={isOpen} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-          {subChildItem?.map(({icon, title, path }, index) => (
-            <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
-            <ReactSVG src={icon} />
-            </ListItemIcon>
-            <ListItemText primary={title} />
-          </ListItemButton>
-          ))}
-          </List>
-          </Collapse>
-             </>
-            ))
-            
-            }
+                <Collapse in={isOpen} timeout="auto" unmountOnExit>
+                  <List component="div" disablePadding className="sideNav__innerChild">
+                    {subChildItem?.map(({ icon, title, path }, index) => (
+                      <NavLink
+                        key={index}
+                        to={path}
+                        className={({ isActive, isPending }) =>
+
+                            isActive 
+                            ? "sideNav__link sideNav__link--active"
+                            : "sideNav__link"
+                        }
+                      >
+                        <ListItemButton className="sideNav__child">
+                          <ListItemText primary={title} />
+                        </ListItemButton>
+                      </NavLink>
+                    ))}
+                  </List>
+                </Collapse>
+              </>
+            ))}
           </>
         </List>
       </Collapse>
