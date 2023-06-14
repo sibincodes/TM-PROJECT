@@ -8,7 +8,6 @@ import { DropDown } from "../../CommonComponents/DropDownMenu/drop-down-menu";
 import TableComponent from "../../CommonComponents/Table/TableComponents";
 import { AvatarComponent } from "./AvatarComponent";
 
-
 const InputComponent = ({
   student,
   marksChangeHandler,
@@ -83,12 +82,11 @@ const Button = ({
     setAnchorEl(event.currentTarget);
   };
 
-  const handleMenuClose = (val?:string) => {
+  const handleMenuClose = (val?: string) => {
     setAnchorEl(null);
     val && setSort(val);
-
   };
-  
+
   return (
     <>
       <ButtonComponent
@@ -130,7 +128,7 @@ const StudentTableComponent = () => {
         id: 400,
         type: "assignment",
         details: {
-          status : 'Not Submitted'
+          status: "Not Submitted",
         },
       },
     },
@@ -148,7 +146,7 @@ const StudentTableComponent = () => {
         id: 400,
         type: "assignment",
         details: {
-          status : 'Pending Evaluation'
+          status: "Pending Evaluation",
         },
       },
     },
@@ -175,54 +173,53 @@ const StudentTableComponent = () => {
     { col: <AvatarComponent name="All Students" />, colData: "" },
     { col: <Button setSort={setSort} sort={sort} />, colData: "" },
   ];
-  const data = sort && sort!=="View All" ?
-  users.filter((elem) => elem?.task?.details?.status===sort) : users;
+  const data =
+    sort && sort !== "View All"
+      ? users.filter((elem) => elem?.task?.details?.status === sort)
+      : users;
 
-  const rows = data.length > 0 ? data.map((elem) => (
-    {
-    row: [
-      {
-        col: (
-          <AvatarComponent
-            name={elem.student.fullname}
-            img={elem.student.avatar}
-            color={elem.student.color}
-          />
-        ),
-        colData: "",
-      },
-      {
-        col: (
-          <InputComponent
-            student={elem.student}
-            value={marks[elem.student.id]}
-            marksChangeHandler={marksChangeHandler}
-          />
-        ),
-        colData: "",
-      },
-    ],
-    rowData: elem,
-  } 
-  )) :    [{
-    row: [
-      {
-        col: (
-          <div>No data found!!</div>
-         
-        ),
-        colData: "",
-      },
-   
-    ],
-    rowData: '',
-  }]
-      ;
-      console.log(rows.length)
+  const rows =
+    data.length > 0
+      ? data.map((elem) => ({
+          row: [
+            {
+              col: (
+                <AvatarComponent
+                  name={elem.student.fullname}
+                  img={elem.student.avatar}
+                  color={elem.student.color}
+                />
+              ),
+              colData: "",
+            },
+            {
+              col: (
+                <InputComponent
+                  student={elem.student}
+                  value={marks[elem.student.id]}
+                  marksChangeHandler={marksChangeHandler}
+                />
+              ),
+              colData: "",
+            },
+          ],
+          rowData: elem,
+        }))
+      : [
+          {
+            row: [
+              {
+                col: <div>No data found!!</div>,
+                colData: "",
+              },
+            ],
+            rowData: "",
+          },
+        ];
 
   return (
     <StudentList className="list">
-      <TableComponent columns={columns} rows={rows} sort={data.length>0} />
+      <TableComponent columns={columns} rows={rows} sort={data.length > 0} />
     </StudentList>
   );
 };
