@@ -381,20 +381,21 @@ const ScheduleMain = () => {
       created_at: "2023-05-30T05:25:01.000000Z",
       updated_at: "2023-05-30T05:25:01.000000Z",
     },
-    
   ];
-useEffect(()=>{
-  setCell(timeTable[0].id)
-
-},[])
-  const wrapperHead = <ScheduleHeadComponent />;
+  const [schedule, setSchedule] = useState(timeTable);
+  useEffect(() => {
+    setCell(schedule[0].id);
+  }, []);
+  const wrapperHead = <ScheduleHeadComponent setSchedule={setSchedule}/>;
   const wrapperBody = [
     <ScheduleTableComponent
       selectedCell={selectedCell}
       cellHighlightHandler={cellHighlightHandler}
-      timeTable={timeTable}
+      timeTable={schedule}
     />,
-    <ScheduleDetailComponent detail={timeTable.filter(elem=>elem.id===selectedCell)[0]} />,
+    <ScheduleDetailComponent
+      detail={schedule.filter((elem) => elem.id === selectedCell)[0]}
+    />,
   ];
   return (
     <Box sx={{ maxWidth: "494px" }}>
