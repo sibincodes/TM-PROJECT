@@ -1,18 +1,36 @@
-import { Avatar, Box, TextField } from "@mui/material";
-import { previousDay } from "date-fns";
+import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import { ReactSVG } from "react-svg";
 import { StudentList } from "../../../styles/studentList";
 import { theme } from "../../../ThemeProvider";
+import { AvatarIcon } from "../../CommonComponents/AvatarIcon";
 import { ButtonComponent } from "../../CommonComponents/Button/button";
 import { DropDown } from "../../CommonComponents/DropDownMenu/drop-down-menu";
 import TableComponent from "../../CommonComponents/Table/TableComponents";
 
 //Avatar and Name
-const AvatarComponent = ({ name, img }: { name: string; img?: string }) => {
+const AvatarComponent = ({
+  name,
+  img,
+  color,
+}: {
+  name: string;
+  img?: string;
+  color?: string;
+}) => {
   return (
     <Box className="list__left">
-      <Avatar src={img || "/icons/user.svg"} className="list__image" />
+      <AvatarIcon
+        img={img || "/icons/user.svg"}
+        styles={
+          img
+            ? {
+                border: "2px solid",
+                borderColor: color,
+              }
+            : null
+        }
+      />
       <h4 className="list__text">{name}</h4>
     </Box>
   );
@@ -20,10 +38,10 @@ const AvatarComponent = ({ name, img }: { name: string; img?: string }) => {
 const InputComponent = ({
   student,
   marksChangeHandler,
-  value
+  value,
 }: {
   student: any;
-  value:string;
+  value: string;
   marksChangeHandler: (
     student: {
       id: number;
@@ -32,7 +50,7 @@ const InputComponent = ({
       section: string;
       avatar: string;
     },
-    marks: string,
+    marks: string
   ) => void;
 }) => {
   return (
@@ -52,7 +70,13 @@ const InputComponent = ({
 };
 
 // Filter dropdown
-const Button = ({setSort,sort}:{setSort:React.Dispatch<React.SetStateAction<string>>,sort:string}) => {
+const Button = ({
+  setSort,
+  sort,
+}: {
+  setSort: React.Dispatch<React.SetStateAction<string>>;
+  sort: string;
+}) => {
   const dropdownStyles = {
     ".MuiMenuItem-root": {
       padding: "10px 16px",
@@ -72,13 +96,12 @@ const Button = ({setSort,sort}:{setSort:React.Dispatch<React.SetStateAction<stri
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const menuOptions = [
-    { listItem: "View All(55)",value:"View All" },
-    { listItem: "Not Submitted (10)", value:"Not Submitted"},
-    { listItem: "Pending Evaluation (15)",value:"Pending Evaluation" },
-    { listItem: "Resubmitted (10)",value:"Resubmitted" },
-    { listItem: "Approved (10)",value:"Approved" },
-    { listItem:"Rejected (5)",value:"Rejected" },
-
+    { listItem: "View All(55)", value: "View All" },
+    { listItem: "Not Submitted (10)", value: "Not Submitted" },
+    { listItem: "Pending Evaluation (15)", value: "Pending Evaluation" },
+    { listItem: "Resubmitted (10)", value: "Resubmitted" },
+    { listItem: "Approved (10)", value: "Approved" },
+    { listItem: "Rejected (5)", value: "Rejected" },
   ];
   const ButtonActionHandler = (
     event: React.MouseEvent<HTMLButtonElement | null>
@@ -86,10 +109,9 @@ const Button = ({setSort,sort}:{setSort:React.Dispatch<React.SetStateAction<stri
     setAnchorEl(event.currentTarget);
   };
 
-  const handleMenuClose = (val:string) => {
+  const handleMenuClose = (val: string) => {
     setAnchorEl(null);
-    setSort(val)
- 
+    setSort(val);
   };
   return (
     <>
@@ -116,9 +138,7 @@ const Button = ({setSort,sort}:{setSort:React.Dispatch<React.SetStateAction<stri
 const StudentTableComponent = () => {
   const [marks, setMarks] = useState<{
     [id: number]: string;
-  }>({
-
-  });
+  }>({});
   const users = [
     {
       id: 1,
@@ -128,6 +148,7 @@ const StudentTableComponent = () => {
         class: "V",
         section: "A",
         avatar: "https://i.pravatar.cc/150?img=4",
+        color: "#EF2424",
       },
       task: {
         id: 400,
@@ -143,6 +164,7 @@ const StudentTableComponent = () => {
         class: "V",
         section: "A",
         avatar: "https://i.pravatar.cc/150?img=3",
+        color: "#EF2424",
       },
       task: {
         id: 400,
@@ -152,12 +174,10 @@ const StudentTableComponent = () => {
     },
   ];
   useEffect(() => {
-    users.map((elem) => 
-
-    setMarks((prev)=>({...prev,[elem.student.id]:'0'}))
-
+    users.map((elem) =>
+      setMarks((prev) => ({ ...prev, [elem.student.id]: "0" }))
     );
-  },[]);
+  }, []);
   const marksChangeHandler = (
     student: {
       id: number;
@@ -168,13 +188,13 @@ const StudentTableComponent = () => {
     },
     marks: string
   ) => {
-    setMarks(prev=>({...prev, [student.id]: marks }));
+    setMarks((prev) => ({ ...prev, [student.id]: marks }));
   };
-  const [sort,setSort]=useState('')
+  const [sort, setSort] = useState("");
 
   const columns = [
     { col: <AvatarComponent name="All Students" />, colData: "" },
-    { col: <Button setSort={setSort} sort={sort}/>, colData: "" },
+    { col: <Button setSort={setSort} sort={sort} />, colData: "" },
   ];
   const rows = users.map((elem) => ({
     row: [
@@ -183,6 +203,7 @@ const StudentTableComponent = () => {
           <AvatarComponent
             name={elem.student.fullname}
             img={elem.student.avatar}
+            color={elem.student.color}
           />
         ),
         colData: "",
