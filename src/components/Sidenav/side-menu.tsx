@@ -67,7 +67,7 @@ export const SideMenu = ({
       <Collapse in={menuOpen?.main} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <>
-            {childItems.map(({ subChildItem, icon, title, path }, indexes) => (
+            {childItems?.map(({ subChildItem, icon, title, path }, indexes) => (
               <>
                 <NavLink
                   key={indexes}

@@ -55,9 +55,9 @@ export const SideNavigation = () => {
     }
     else
     {
-    sideMenuOptions.map(({ mainMenu, childItems }, index) => {
+    sideMenuOptions?.map(({ mainMenu, childItems }, index) => {
       let childItem: { [x: number]: boolean } = {};
-      childItems.map(({ icon }, indexes) => {
+      childItems?.map(({ icon }, indexes) => {
         childItem[indexes] = false;
       });
       setOpen((prev) => ({
@@ -70,7 +70,7 @@ export const SideNavigation = () => {
 
   return (
     <>
-      {sideMenuOptions.map(({ mainMenu, childItems }, index) => (
+      {sideMenuOptions?.map(({ mainMenu, childItems }, index) => (
         <List>
           <SideMenu
             index={index}
