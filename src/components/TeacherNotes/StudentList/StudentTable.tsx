@@ -171,12 +171,11 @@ const StudentTableComponent = () => {
     setMarks((prev) => ({ ...prev, [student.id]: marks }));
   };
   const [sort, setSort] = useState("");
-
   const columns = [
     { col: <AvatarComponent name="All Students" />, colData: "" },
     { col: <Button setSort={setSort} sort={sort} />, colData: "" },
   ];
-  const data = sort ?
+  const data = sort && sort!=="View All" ?
   users.filter((elem) => elem?.task?.details?.status===sort) : users;
 
   const rows = data.length > 0 ? data.map((elem) => (
@@ -205,23 +204,25 @@ const StudentTableComponent = () => {
     ],
     rowData: elem,
   } 
-  )) :     {
+  )) :    [{
     row: [
       {
         col: (
-              <div>No Data Found !!</div>
+          <div>No data found!!</div>
+         
         ),
         colData: "",
       },
-
+   
     ],
-    rowData: {},
-  }
+    rowData: '',
+  }]
       ;
+      console.log(rows.length)
 
   return (
     <StudentList className="list">
-      <TableComponent columns={columns} rows={rows} sort={true} />
+      <TableComponent columns={columns} rows={rows} sort={data.length>0} />
     </StudentList>
   );
 };
