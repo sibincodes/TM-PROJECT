@@ -3,16 +3,16 @@ import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 
 export default function DateCalendarValue({
   setOpen,
-  value,
-  setValue
+dateSelectHandler,
+value
 }: {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  value: dayjs.Dayjs | null,
-  setValue: React.Dispatch<React.SetStateAction<dayjs.Dayjs | null>>
+  value: dayjs.Dayjs | null
+  dateSelectHandler: (val?: Dayjs | null) => void
 }) {
 
   return (
@@ -21,8 +21,7 @@ export default function DateCalendarValue({
         <DateCalendar
           value={value}
           onChange={(newValue) => {
-            setValue(newValue);
-            setOpen((prev) => !prev);
+            dateSelectHandler(newValue)
           }}
         />
       </LocalizationProvider>

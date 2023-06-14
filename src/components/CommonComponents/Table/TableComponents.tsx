@@ -24,7 +24,7 @@ const TableComponent = ({
   const [allSelected, setAllSelected] = useState(false);
   useEffect(() => {
     rows.map((elem, index) => {
-      setSelectedRows((prev) => ({ ...prev, [elem.rowData.id]: {selected:false,data:elem.rowData} }));
+      setSelectedRows((prev) => ({ ...prev, [elem?.rowData?.id]: {selected:false,data:elem?.rowData} }));
     });
   }, []);
 
@@ -44,7 +44,7 @@ const TableComponent = ({
       <table>
         <thead>
           <tr>
-            {sort && (
+            {sort && rows && (
               <th>
                 <Checkbox
                   checked={allSelected}
@@ -56,16 +56,16 @@ const TableComponent = ({
                 />
               </th>
             )}
-            {columns.map((col: any, index: number) => (
+            {columns?.map((col: any, index: number) => (
               <th onClick={() =>callbackFn && callbackFn(col.colData)}>{col.col}</th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {rows.map((row, index) => (
+          {rows?.map((row, index) => (
             <tr
               className={
-                selectedRows[row.rowData.id]?.selected ? "row--selected" : "row--unselected"
+                selectedRows[row?.rowData?.id]?.selected ? "row--selected" : "row--unselected"
               }
             >
               <>
@@ -74,13 +74,13 @@ const TableComponent = ({
                   <td>
                     <Checkbox
                       onChange={() => handleRowClick(index, row.rowData)}
-                      checked={selectedRows[row.rowData.id]?.selected|| false}
+                      checked={selectedRows[row?.rowData?.id]?.selected|| false}
                       icon={<ReactSVG src="/icons/checkbox.svg" />}
                       checkedIcon={<ReactSVG src="/icons/checkbox-tick.svg" />}
                     />
                   </td>
                 )}
-                {row.row.map((column: any) => (
+                {row?.row?.map((column: any) => (
                   <td onClick={() => callbackFn && callbackFn(column.colData)}>{column.col}</td>
                 ))}
               </>

@@ -83,15 +83,11 @@ export const StudentList = styled('div')(({ theme }) => ({
         alignItems: 'center'
 
     },
-    ".list__image ": {
+    ".list__left .avatar__image ": {
         width: '24px',
         height: '24px',
         marginRight: '10px',
         borderRadius: '50%'
-    },
-    "tbody .list__image ": {
-        border: '2px solid',
-        borderColor: theme.palette.custom.borderRed
     },
     ".list__text": {
         fontSize: '14px',
