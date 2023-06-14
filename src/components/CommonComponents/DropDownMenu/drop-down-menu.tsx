@@ -15,8 +15,8 @@ export const DropDown = ({
   style,
   menuOptions
 }: DropDownStatus) => {
-  const handleClose = (val:string) => {
-    val && handleMenuClose(val);
+  const handleClose = (val?:string) => {
+    handleMenuClose(val || '');
   };
 
 
@@ -25,7 +25,7 @@ export const DropDown = ({
       id="header-menu"
       anchorEl={anchorEl}
       open={isOpen}
-      onClose={handleClose}
+      onClose={()=>handleClose()}
       MenuListProps={{
         "aria-labelledby": "basic-button",
         sx: style,

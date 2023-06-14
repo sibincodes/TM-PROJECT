@@ -109,10 +109,11 @@ const Button = ({
     setAnchorEl(event.currentTarget);
   };
 
-  const handleMenuClose = (val: string) => {
+  const handleMenuClose = (val?:string) => {
     setAnchorEl(null);
-    setSort(val);
+    val && setSort(val);
   };
+  
   return (
     <>
       <ButtonComponent
