@@ -22,10 +22,22 @@ export const SideMenu = ({
     title: string;
     path: string;
   }[];
-  menuOpen: boolean;
-  handleClick: (title: number) => void;
+  menuOpen:  {
+    main: boolean;
+    childItem: {
+        [x: number]: boolean;
+    };
+}
+  handleClick: (title: number,child?:boolean,index?:number) => void;
   index: number;
-  setOpen: Dispatch<SetStateAction<{ [x: string]: boolean }>>;
+  setOpen: React.Dispatch<React.SetStateAction<{
+    [x: string]: {
+        main: boolean;
+        childItem: {
+            [y: number]: boolean;
+        };
+    };
+}>>
 }) => {
   const theme = useTheme();
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +46,6 @@ export const SideMenu = ({
       setIsOpen((prevState) => !prevState);
     }
   };
-
   return (
     <>
       <ListItemButton
@@ -48,18 +59,18 @@ export const SideMenu = ({
             width="8"
             height="16"
             className={
-              menuOpen ? "sideNav__parent--open" : "sideNav__parent--close"
+              menuOpen?.main ? "sideNav__parent--open" : "sideNav__parent--close"
             }
           />
         }
       </ListItemButton>
-      <Collapse in={menuOpen} timeout="auto" unmountOnExit>
+      <Collapse in={menuOpen?.main} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <>
-            {childItems.map(({ subChildItem, icon, title, path }, index) => (
+            {childItems.map(({ subChildItem, icon, title, path }, indexes) => (
               <>
                 <NavLink
-                  key={index}
+                  key={indexes}
                   to={subChildItem ? "" : path}
                   className={({ isActive, isPending }) =>
                     isPending
@@ -68,7 +79,7 @@ export const SideMenu = ({
                       ? "sideNav__link sideNav__link--active"
                       : "sideNav__link"
                   }
-                  onClick={() => childClickHandler(subChildItem ? true : false)}
+                  onClick={() => subChildItem ? handleClick(index,true,indexes):()=>{}}
                 >
                   <ListItemButton className="sideNav__child">
                     <ListItemIcon>
@@ -90,11 +101,11 @@ export const SideMenu = ({
                   </ListItemButton>
                 </NavLink>
 
-                <Collapse in={isOpen} timeout="auto" unmountOnExit>
+                <Collapse in={menuOpen?.childItem[indexes]} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding className="sideNav__innerChild">
-                    {subChildItem?.map(({ icon, title, path }, index) => (
+                    {subChildItem?.map(({ icon, title, path }, indexed) => (
                       <NavLink
-                        key={index}
+                        key={indexed}
                         to={path}
                         className={({ isActive, isPending }) =>
 

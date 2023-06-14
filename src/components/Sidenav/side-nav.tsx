@@ -9,9 +9,30 @@ import { Preview } from "@mui/icons-material";
 
 export const SideNavigation = () => {
   const { saveRoutes } = React.useContext(RoutesContext) as RoutesContextType;
-  const [menuOpen, setOpen] = useState<{ [x: string]: boolean }>({});
-  const handleClick = (menuOption: number) => {
-    setOpen((prev) => ({ ...prev, [menuOption]: !menuOpen[menuOption] }));
+  const [menuOpen, setOpen] = useState<{
+    [x: string]: { main: boolean; childItem: { [y: number]: boolean } };
+  }>({});
+  const handleClick = (menuOption: number, child?: boolean, index?: number) => {
+    if (!child) {
+      setOpen((prev) => ({
+        ...prev,
+        [menuOption]: {
+          main: !menuOpen[menuOption].main,
+          childItem: menuOpen[menuOption].childItem,
+        },
+      }));
+    } else if (index?.toString()) {
+      setOpen((prev) => ({
+        ...prev,
+        [menuOption]: {
+          main: menuOpen[menuOption].main,
+          childItem: {
+            ...menuOpen[menuOption].childItem,
+            [index]: !menuOpen[menuOption].childItem[index],
+          },
+        },
+      }));
+    }
   };
 
   // useEffect(() => {
@@ -22,29 +43,34 @@ export const SideNavigation = () => {
   // }, []);
 
   useEffect(() => {
-    if(Object.entries(menuOpen).length)
-    localStorage.setItem("menuIndex", JSON.stringify(menuOpen));
-  },[menuOpen]);
+    if (Object.entries(menuOpen).length)
+      localStorage.setItem("menuIndex", JSON.stringify(menuOpen));
+  }, [menuOpen]);
 
   useEffect(() => {
-    const openedMenuDetails = localStorage.getItem('menuIndex');
-    if(openedMenuDetails){
-      const openedMenuData = JSON.parse(openedMenuDetails);
-      setOpen(openedMenuData);
-    }
-    else
-    {
-       sideMenuOptions.map(({ mainMenu },index) => {
-      setOpen((prev) => ({ ...prev, [index]: false }));
-    }
-    );
-    }
-  },[])
-
+    // const openedMenuDetails = localStorage.getItem('menuIndex');
+    // if(openedMenuDetails){
+    //   const openedMenuData = JSON.parse(openedMenuDetails);
+    //   setOpen(openedMenuData);
+    // }
+    // else
+    // {
+    sideMenuOptions.map(({ mainMenu, childItems }, index) => {
+      let childItem: { [x: number]: boolean } = {};
+      childItems.map(({ icon }, indexes) => {
+        childItem[indexes] = false;
+      });
+      setOpen((prev) => ({
+        ...prev,
+        [index]: { main: false, childItem: childItem },
+      }));
+    });
+    // }
+  }, []);
 
   return (
     <>
-      {sideMenuOptions.map(({ mainMenu, childItems },index) => (
+      {sideMenuOptions.map(({ mainMenu, childItems }, index) => (
         <List>
           <SideMenu
             index={index}
@@ -52,7 +78,7 @@ export const SideNavigation = () => {
             childItems={childItems}
             menuOpen={menuOpen[index]}
             handleClick={handleClick}
-            setOpen = {setOpen} 
+            setOpen={setOpen}
           />{" "}
         </List>
       ))}
