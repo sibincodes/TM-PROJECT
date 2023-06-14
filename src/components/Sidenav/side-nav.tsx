@@ -48,13 +48,13 @@ export const SideNavigation = () => {
   }, [menuOpen]);
 
   useEffect(() => {
-    // const openedMenuDetails = localStorage.getItem('menuIndex');
-    // if(openedMenuDetails){
-    //   const openedMenuData = JSON.parse(openedMenuDetails);
-    //   setOpen(openedMenuData);
-    // }
-    // else
-    // {
+    const openedMenuDetails = localStorage.getItem('menuIndex');
+    if(openedMenuDetails){
+      const openedMenuData = JSON.parse(openedMenuDetails);
+      setOpen(openedMenuData);
+    }
+    else
+    {
     sideMenuOptions.map(({ mainMenu, childItems }, index) => {
       let childItem: { [x: number]: boolean } = {};
       childItems.map(({ icon }, indexes) => {
@@ -65,7 +65,7 @@ export const SideNavigation = () => {
         [index]: { main: false, childItem: childItem },
       }));
     });
-    // }
+    }
   }, []);
 
   return (

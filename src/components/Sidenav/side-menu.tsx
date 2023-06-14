@@ -92,7 +92,7 @@ export const SideMenu = ({
                         width="8"
                         height="16"
                         className={
-                          isOpen
+                          menuOpen?.childItem[indexes]
                             ? "sideNav__parent--open"
                             : "sideNav__parent--close"
                         }
